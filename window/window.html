@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Window Prototype</title>
+		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+		<style type="text/css">
+		h1{font-family:'Lobster';}
+		body{margin:0 0 0 auto;background-color:black;color:white;width:250px;font-family:'Lato';}
+		#messages{text-align:center;}
+		section#menu{position:fixed; bottom:0;}
+		section#menu ul{margin:0;padding:0;list-style-type:none;}
+		section#menu ul li{margin-bottom:20px;}
+		section#menu ul li a{display:block;width:200px;text-align:center; text-decoration:none; border:4px solid white; color:white;font-size:40px;}
+		section#menu ul li a.active, section#menu ul li a:hover{color:black; background-color:#fbff00;border-color:#fbff00;}
+
+		</style>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script type="text/javascript">
+		var currentTime = new Date();
+		var hours = currentTime.getHours();
+		var minutes = currentTime.getMinutes();
+		
+		if (minutes < 10){
+		minutes = "0" + minutes;
+		}
+		var time= hours%12 + ":" + minutes + " ";
+		if(hours > 11){
+		time += "PM";
+		} else {
+		time += "AM";
+		}
+		</script>
+	</head>
+	
+	<body>
+			<section id="messages">
+			<h1>Great Circles</h1>
+			<h2>Hi, Mr. X</h2>
+			<h3 class="time"></h3>
+
+			</section>
+			
+			<section id="menu">
+			<ul>
+			<li><a href="asd">Option 1</a></li>
+			<li><a href="asd">Option 2</a></li>
+			<li><a class="active" href="asd">Option 3</a></li>
+			<li><a href="asd">Option 4</a></li>
+			</ul>
+			</section>
+
+	</body>
+	<script src="/socket.io/socket.io.js"></script>
+		
+
+	<script>
+	var socket = io.connect();
+
+	$("h3.time").html(time);
+	
+	socket.on('msg', function (data) {
+	    if (data=="UP") {
+	    	 $("#menu ul li a.active").parent().not(':first-child').find("a.active").removeClass("active").parent().prev().children().addClass("active");
+	    }
+	    if (data=="DOWN") {
+	    	 $("#menu ul li a.active").parent().not(':last-child').find("a.active").removeClass("active").parent().next().children().addClass("active");
+	    } 	       
+ 	       
+	});
+
+	</script>
+</html>

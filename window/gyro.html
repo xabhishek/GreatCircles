@@ -1,0 +1,84 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+	<head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+		<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+		<title>Peter Friese's Gyro Demo</title> 
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	
+	</head> 
+
+	<body>
+		<div id="yes"> 
+				<div class="box" id="accel">
+					<span class="head">Accelerometer</span>
+					<span id="xlabel"></span>
+					<span id="ylabel"></span>
+					<span id="zlabel"></span>
+					<span id="ilabel"></span>					
+					<span id="arAlphaLabel"></span>										
+					<span id="arBetaLabel"></span>										
+					<span id="arGammaLabel"></span>																				
+				</div>		
+			
+				<div class="box" id="gyro">
+					<span class="head">Gyroscope</span>
+					<span id="alphalabel"></span>			
+					<span id="betalabel"></span>
+					<span id="gammalabel"></span>
+				</div>
+				
+				<div class="box2" id="accelcolor">
+					<span class="head">Color</span>
+				</div>
+				<div class="box2" id="gyrocolor">
+					<span class="head">Color</span>
+				</div>
+				
+		</div>
+				
+		<script src="http://localhost/socket.io/socket.io.js"></script>
+		
+		<script>
+	  	  var socket = io.connect("http://localhost");
+		
+		</script>
+
+		<script> 
+			var delay = 100;
+			
+			
+		 
+				setInterval(function() {
+					
+
+					socket.on('msg', function (data) {
+
+					
+					document.getElementById("xlabel").innerHTML = "X: " + data.X;
+					document.getElementById("ylabel").innerHTML = "Y: " + data.Y;
+					document.getElementById("zlabel").innerHTML = "Z: " + data.Z;										
+					document.getElementById("ilabel").innerHTML = "I: " + data.I;	
+														
+					document.getElementById("arAlphaLabel").innerHTML = "arA: " + data.ARALPHA;														
+					document.getElementById("arBetaLabel").innerHTML = "arB: " + data.ARBETA;
+					document.getElementById("arGammaLabel").innerHTML = "arG: " + data.ARGAMMA;																									
+					document.getElementById("alphalabel").innerHTML = "Alpha: " + data.ALPHA;
+					document.getElementById("betalabel").innerHTML = "Beta: " + data.BETA;
+					document.getElementById("gammalabel").innerHTML = "Gamma: " + data.GAMMA;
+
+
+					document.bgColor = makecolor(arAlpha, arBeta, arGamma);
+
+
+				});
+				}, delay);
+				 
+			</script> 
+			
+			
+			
+		</body> 
+</html> 

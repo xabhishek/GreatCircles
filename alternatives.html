@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Great Circles Team | Georgia Tech HCI Project</title>
+		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+		<link href="style.css" rel="stylesheet" type="text/css">	
+	</head>
+	<body>
+		<header>
+			<hgroup>
+				<h1>Great Circles</h1>
+				<h2>HCI Smart Key Project</h2>
+			</hgroup>
+			
+			<section id="menu">
+				<ul>
+					<li class="a"><a href="index.html">Project</a></li>
+					<li class="b"><a class="active" href="design.html">Design</a></li>
+					<li class="c"><a href="solution.html">Solution</a></li>
+				</ul>
+			</section>
+
+		</header>
+		
+		
+		<section class="b" id="sub-menu">
+			<ul>
+			<li>Section</li>
+			<li><a href="design.html">Brainstorming</a></li>
+			<li><a href="process.html">Design Process</a></li>
+			<li><a href="assumptions.html">Assumptions</a></li>
+			<li><a class="active" href="alternatives.html">Design Alternatives</a></li>
+			</ul>
+		</section>
+		
+		<section id="content">
+			<div class="content-1">
+				<h2>Smartphone App</h2>
+				<p>Our first design is an smartphone application for creating and reviewing scheduled uses of the car, for seeing the status of the car at a glance, and for viewing a graph of the proportionate share of car use per person.</p>
+				<p>For the schedule editing and viewing, our app follows the example of existing calendar designs. This provides consistency for users already familiar with smartphone calendar apps. We have month, day, and agenda views, and creating viewing and editing of the entries in the calendar is mostly no different from the current calendar implementations.</p>
+				<p>The schedule interaction does differ from conventional calender applications in one particular view. When a user is at the level of detail of a single reservation item, the view is uniquely different. A circular diagram is the central element. This diagram is shaped like a flower, with the center containing an icon representing the car, and arranged radially around the center are icons representing seats in the car. If the reservation has seats open, the user can touch a 'petal' and drag the icon toward the center. This action signifies joining the ride and now the user is enrolled in the reservation. Any updates to the reservation, ie. changes to the time or cancellation, send notifications to the users who joined in. In addition, reminders are sent (if desired) to the smartphone of all enrolled members of the reservation.</p>
+				<p>Another element of this design is focused on the current status of the car itself. This car centered view depicts the current availability of the car. If it is available it shows the car parked in its garage. If it isn't available, the garage is empty with an overlay noting who has the car currently, a short description of the active reservation, and a button to pull up the car's location (based on the real time GPS data) on the phone's map application. Below this 'garage' area of the view, there should be a condensed agenda panel showing the next scheduled use.  This was designed to be extremely obvious; this system could even be extended to make use of push notifications for further increased awareness.</p>
+				<p>When in proximity to the car, the smartphone app will interact with the onboard system to enable unlocking and ignition. As the car is used, the system can use the phone GPS and compare it with the onboard GPS to confirm that the user who unlocked the car is actually the one driving the car. In this set of features, we are using the smartphone to emulate the smart key system found in today's cars. A gesture based 'turn the key' option has been considered, but the risk of a false positive action starting the car unintentionally may be a safety risk that outweighs the convenience.</p>
+				<p>Safety and and the maintenance of driver focus is even more of a concern when sharing a car.  As such, during the activity of driving, we think there could be an advantage to force the phone to stay in 'driving mode.'</p>
+				<p>
+				This would  prevent texting, phone calls, or other distractions from interrupting the driver. Maybe it could forward the phone call functions wirelessly to the car's built in hands free system. This is a potentially contentious feature, and may be outside the scope of the app.  However, the app would definitely provide eyes-free notifications and interactions if possible (for example, a 'ride request' received while driving could bring up a single fullscreen 'accept' button.)  The third major component of the app is its ability to facilitate the viewing of proportionate car usage by different group members. In this set of views, the user can specify a range of dates and then view a graph of the usage for that time. Graph options could include a stacked bar chart for time elapsed by user, miles covered by user (driving and riding), and a bar showing the proportion of shared time and miles compared with individual time and miles for their self or any user.
+				</p>
+				<p>This app is primarily about interacting with the schedule system, taking over the role of a smart key, and viewing the overall trends of use.</p>
+
+				<h3>Design Strengths</h3>
+				<p>Smart phones are near-ubiquitous and their cost is small in proportion to the car as well as comparable to the replacement cost of a set of smart keys.</p>
+
+				<p>The phone is also a familiar object that users are accustomed to carrying around,  and is one that already has multiple functions. There is currently a trend gaining momentum toward making smart phones serve as digital wallets. Our system extends the idea to digital key rings. For example, some protective phone cases include slots for storing credit and identification cards. A user who keeps electronic access cards, like their GT ID with HID card reader technology, in their phone case is familiar with using their phone like a door key.</p>
+
+				<h3>Design Weaknesses</h3>
+				<p>The phone needs to be functioning; a dead phone could leave users stranded and unable to get in or operate the car. This is a safety concern.</p>
+				<p>A user might accidentally lock their phone inside car (however, this case may be handled by an override, reminders or sensor-controlled restrictions). For example, there could be a sensor in the door that only allows locking or checkout when the doors are closed. If a user attempts to check out, and then opens the door, the system forces another checkout before allowing locking.</p>
+				<p>In addition, while smartphones are common, they are not actually ubiquitous, and there could be issues with compatibility between certain phones.  This is one area in which having function-specific tokens makes more sense.</p>
+
+				<hr>
+				<h2>Wheelman</h2>
+				<p>
+				The car-share group has one shared tablet (probably an iPad running our app), kept at a central location.  This is used for planning, scheduling, and viewing usage data.  Each member of the car-share group has a smart wristband, which they wear when they want to interact with the rest of the system.  This band displays the time until the car is free (if someone else has it checked out) or due (if you have it checked out), the status of the car (via a simple light), and their current 'fuel' remaining.</p>
+
+				<p>Fuel is an evolved form of the resource allotment metaphors discussed earlier- it is measured and used in discrete 'cells,' of which one recharges per day.  A trip might cost 1-4 cells, depending on the reservation length, and the number of passengers (larger carpool = less overall fuel usage).  Fuel cells can also be traded between co-owners like currency by bumping fists with another user, or using the tablet interface.  The system checks whether or not you have enough fuel whenever you try and book a trip, or check out the car.  The wristband syncs wirelessly with a web server which holds the scheduling and usage information.</p> 
+
+				<p>Finally, the car itself has hardware capable of recognizing nearby wristbands, via RFID or otherwise.  When a user wants to take the car out, they use the tablet to book a trip, then simply enter the car with their wristband on.  They can then make a key turning motion near the key slot to start the car.  If they want to use the car on-the-spot, they can enter the car and tap the wheel.  If there is no reservation for the next hour, the car is automatically checked out to the user for one hour.  The wristband also allows users to receive messages and send simple replies.  For example, if another user requests to join your planned trip, your wristband might rumble, and a message would scroll across the small LED screen.  You could then tab the single button to accept their join request.  You could also request a ride by making the hitchhiking motion while wearing the wristband- in this case, other system users would get a rumble and LED notification of your need and location.  Location is tracked by a GPS inside of the wristband; in this way, usage could be tracked (potentially without the need for an in-car computer than does this).</p>
+
+				<p>Thus, Wheelman users always know where the car is, when it will be available, and necessary information about what other users are trying to do with the car.</p>
+
+				<h3>Design Strengths</h3>
+				<p>The tablet supports discovery of shared plans, 'water-cooler' discussion of plans and usage statistics</p>
+
+				<p>The watchlike band provides constant awareness of car status</p>
+
+				<p>This design does not presuppose that all members have smartphones</p>
+
+				<p>We provide a clear conceptual model- the tablet gives the wristbands permission to drive</p>
+			
+			<h3>Design Weaknesses</h3>
+			<p>Having to walk to a central tablet could be inconvenient- no remote scheduling is supported</p>
+			
+			<p>It's unclear whether anyone would actually wear a wristband (feedback during the poster session corroborated this point)
+			</p>
+			<hr>
+			<h2>Key+</h2>
+			<p>Key+ is our idea to extend the existing functionality of smart keys to include scheduling and permission, and to enable logging driver activity.
+			</p>
+			<p>The design revolves around every driver in the sharing system having a special wireless communication object that works in proximity to the car.
+			</p>
+			<p>
+			Two alternate versions of this implementation differ in the way that access is granted. In one design, the key doesn't have any teeth. The teeth are a separate component that is kept in a kind of lock-box. Someone who wants to use the car has to visit the lock-box and physically connect the key blade to the smartkey base. Motivation for this idea came from wanting to have a central location to manage physical check-out of the single key.
+			</p>
+			<p>
+			The second variation of this design discards the notion of keys with physical teeth and instead assumes we have a wireless way to couple the key to the car. The lock-box function modeled such that a key can only work during a scheduled reservation, and the key checkout procedure is done through a transaction with the database.
+			We enable simple last minute scheduling through button presses on the key. The key reports the availability of the car using a colored LED indicator.
+			</p>
+			
+			<h3>Design Strengths</h3>
+			<p>This design emplyos a very familiar metaphor for using a car.</p>
+			
+			<p>Keys can be carried individually.</p>
+			
+			<p>This system encourages a high level of user autonomy. The system primarily tracks activity and prevents reservations from being disrupted.</p>
+			
+			<p>Ownership of the key is symbolic of ownership of the car. Everyone feels like they own a part of it and are involved.</p>
+			
+			<p>This design allows for tactile simple interactions.</p>
+			
+			<h3>Design Weaknesses</h3>
+			<p>There is limited feedback for informing the user.</p>
+			
+			<p>Adding a small screen to the key might enable better feedback about time remaining, but would increase power consumption and reduce battery life.</p>
+			
+			<p>Wireless communication would be limited to the near area of the car. Sending status information to all the keys may require cellular radio transmission, or at least some kind of radio receiver in the key (like a pager).</p>
+			
+			<p>This design would require a separate interface for viewing the stats, making and reviewing schedules in advance, and has no built in way of providing info about the current status of the car. This could be a web application, or a smartphone application. In any case, the smart key cannot handle the entire scope of interaction.</p>
+			
+			<p>Again, it would be troublesome if someone lost their key.  However, a 'smart key' with GPS could be easily found, perhaps through our external scheduling interface.</p>
+
+			</div>
+		</section>
+		
+		<footer>
+			<img src="img/gt.jpg">
+		</footer>
+	</body>
+</html>
