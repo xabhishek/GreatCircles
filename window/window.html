@@ -6,14 +6,24 @@
 		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 
 		<style type="text/css">
-		h1{font-family:'Lobster';}
-		body{margin:0 0 0 auto;background-color:black;color:white;width:250px;font-family:'Lato';}
-		#messages{text-align:center;}
-		section#menu{position:fixed; bottom:0;}
-		section#menu ul{margin:0;padding:0;list-style-type:none;}
+		h1{font-family:'Lobster';margin:0; padding:10px;}
+		html{background-color:#333; padding:0;z-index:-20;height:100%;}
+		body{margin:0 0 0 auto; background-color:black;color:white;width:300px;height:100%;font-family:'Lato';}
+		
+		header h1{float:left;}
+		header h2{float:right;}
+		header h1, header h2{font-size:20px;}
+		header{clear:both;}
+		
+		#messages{position:relative; width:300px; top:50px; text-align:center;}
+		section#menu{position:fixed; width:300px;bottom:0;}
+		section#menu ul{margin:0 auto; width:220px; padding:0;list-style-type:none;}
 		section#menu ul li{margin-bottom:20px;}
-		section#menu ul li a{display:block;width:200px;text-align:center; text-decoration:none; border:4px solid white; color:white;font-size:40px;}
-		section#menu ul li a.active, section#menu ul li a:hover{color:black; background-color:#d0ff00;border-color:#d0ff00;}
+		section#menu ul li a{display:block;width:200px;text-align:center; text-decoration:none; border:4px solid white; color:white;font-size:20px;}
+		section#menu ul li a.active{color:black; background-color:#d0ff00;border-color:#d0ff00;}
+		
+		section#menu ul li a.off{color: #333; border-color:#373737;}
+
 
 		</style>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -35,21 +45,36 @@
 	</head>
 	
 	<body>
+			<header>
+				<h1>Great Circles</h1>
+				<h2 class="time"></h2>
+			</header>
 			<section id="messages">
-			<h1>Great Circles</h1>
-			<h2>Hi, Mr. X</h2>
-			<h3 class="time"></h3>
+				<h2>Hi, Mr. X</h2>
+				
+				<span></span>
+				
 
 			</section>
 			
 			<section id="menu">
 			<ul>
-			<li><a href="asd">Option 1</a></li>
-			<li><a href="asd">Option 2</a></li>
-			<li><a class="active" href="asd">Option 3</a></li>
-			<li><a href="asd">Option 4</a></li>
+			<li><a class="o1 active" href="#">Drive Now</a></li>
+			<li><a class="o2" href="#">Car Summary</a></li>
+			<li><a class="o3 off" href="#">Edit Trip</a></li>
+
+			<li><a class="a1" href="#">Andy @ 4:30 to Tom's Flat</a></li>
+			<li><a class="a2" href="#">Abhishek @ 6:45 to Moes</a></li>
+			<li><a class="a3 off" href="#">Andy @ 7:30</a></li>
+			<li><a class="a4 off" href="#">Andy @ 9:40</a></li>
 			</ul>
 			</section>
+			
+			<footer>
+				<a href="#">Temp Unlock</a>
+				
+				<span>Locked</span>
+			</footer>
 
 	</body>
 	<script src="/socket.io/socket.io.js"></script>
@@ -58,7 +83,38 @@
 	<script>
 	var socket = io.connect();
 
-	$("h3.time").html(time);
+	$("h2.time").html(time);
+	var	prevState="a";
+	var prevLevel="1";
+	var state="a";
+	var level=1;
+	
+	var l1 =
+			{ 
+				a : 
+				{o1: {text:"X",goesTo: {level:2, state:"b"}}, o2: {text:"Y",goesTo: {level:1, state:"b"}}, o3: {text:"Z",goesTo: {level:1, state:"b"}}, o4: {text:"W",goesTo: {level:1, state:"b"}}
+				}, 
+				b : 
+				{o1: {text:"X",goesTo: {level:2, state:"b"}}, o2: {text:"Y",goesTo: {level:1, state:"b"}}, o3: {text:"Z",goesTo: {level:1, state:"b"}}, o4: {text:"W",goesTo: {level:1, state:"b"}}
+				}
+			};
+	var l2 =
+			{ 
+				a : 
+				{o1: {text:"X",goesTo: {level:1, state:"b"}}, o2: {text:"Y",goesTo: {level:1, state:"b"}}, o3: {text:"Z",goesTo: {level:1, state:"b"}}, o4: {text:"W",goesTo: {level:1, state:"b"}}
+				}, 
+				b : 
+				{o1: {text:"A",goesTo: {level:1, state:"b"}}, o2: {text:"B",goesTo: {level:1, state:"b"}}, o3: {text:"C",goesTo: {level:1, state:"b"}}, o4: {text:"D",goesTo: {level:1, state:"b"}}
+				}
+			};
+	
+
+	function refreshText(){
+		$("a.o1").html(eval("l"+level+"."+state+".o1.text"));
+		$("a.o2").html(eval("l"+level+"."+state+".o2.text"));
+		$("a.o3").html(eval("l"+level+"."+state+".o3.text"));
+		$("a.o4").html(eval("l"+level+"."+state+".o4.text"));
+	}
 	
 	socket.on('msg', function (data) {
 	    if (data=="UP") {
@@ -66,7 +122,32 @@
 	    }
 	    if (data=="DOWN") {
 	    	 $("#menu ul li a.active").parent().not(':last-child').find("a.active").removeClass("active").parent().next().children().addClass("active");
+	    }
+	    if (data=="ENTER") {
+		     var o = $("#menu ul li a.active").removeClass("active").attr('class');
+		     prevState=state;
+		     socket.emit('remote', 1);
+
+		     state = eval("l"+ level + "." + state + "." + o + ".goesTo.state");
+		     
+		     prevLevel=level;
+		     level = eval("l"+ level + "." + state + "." + o + ".goesTo.level");
+		     
+		     $("#menu ul li").first().find("a").addClass("active");
+		     refreshText();
+	    } 	
+	    
+	    if (data=="RED") {
+		     
+		     $("#menu ul li a.active").removeClass("active");
+		     state = prevState;
+		     level = prevLevel;
+		     
+		     $("#menu ul li").first().find("a").addClass("active");
+		     refreshText();
 	    } 	       
+       
+ 	       
  	       
 	});
 
