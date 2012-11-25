@@ -26,7 +26,12 @@ section#sub-menu ul li a.active, section#sub-menu ul li a.active:hover{text-deco
 section#sub-menu ul li a.dead{color:#aaa;border:none;cursor:default;}
 
 section#content{padding:50px;}
+section#content h4{margin-top:0;}
 section#content ol{padding-left:20px}
+section#content ul{list-style-type:none; padding:0}
+section#content ul li a{text-decoration:none;border-bottom:1px dotted black;color:#0072b4;}
+section#content ul li a:hover{text-decoration:none;border-bottom:1px solid black;}
+
 div.content-1{width:700px;}
 div.content-1 h2,div.content-2 h2{text-transform:uppercase;}
 div.content-2{-webkit-column-count:2;}

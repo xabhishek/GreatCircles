@@ -30,9 +30,9 @@
 
 	<body>
 	<div id="remote">
-		<span href="#" id="red">
+		<a href="#" id="red">
 
-		</span>
+		</a>
 
 		<a id="up">
 		</a>
@@ -52,7 +52,8 @@
 	</script>
 	
 	<script>
-		function stateChange(state)
+	/*
+	function stateChange(state)
 		{
 			switch(state)
 			{
@@ -73,15 +74,14 @@
 			if (data=1 || data==2 || data=3) stateChange(data);	       
 	    });
 
+*/
 		$("a").click(function(){
 			$(this).effect("pulsate", { times:2 }, 100);
 		});
 
-/*
 	 	$("#red").click(function(){
-	 		socket.emit('remote', "RED");
+	 		socket.emit('remote', "UNLOCK");
 	 	});
-*/
 	 	$("#up").click(function(){
 	 		socket.emit('remote', "UP");
 	 	}

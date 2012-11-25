@@ -37,14 +37,59 @@
 		
 		<section id="content">
 			<div class="content-1">
-				<h2>Wireframes</h2>
-				<p>Just a couple with description text.</p>
-				<h2>WebSocket Key Prototype</h2>
-				<p>This works like a remote.</p>
-				<h2>Car Window Interface</h2>
-				<p>An ODB-II port is a common feature built into the underside of the dashboard in many cars. Some driving enthusiasts have developed custom interfaces for this data port, and they use special control systems to adjust the engine performance settings. Many current model vehicles include Bluetooth connectivity for smart phone integration into the stereo system for streaming audio and telephone calls over the car speakers. For the purposes of our designs, we assume that similar communication protocols could be used to record geographic trip data, elapsed time, and the car's energy consumption measurements and then relay this to our database.</p>
+				<h2>The Role of the Prototype</h2>
+				<p>The final and complete implementation of our system prototype is meant to fit right in with the natural (and rapidly evolving) interactions between smart keys and cars. When a person has a key somewhere in their hand or pocket, and they come within proximity of the car it responds to that event, and when the user then touches the door handle the door unlocks. We want our system to step in during that process and provide additional information. After sensing the key nearby, our system augments the usual dome-light turning on behavior and shows a visual interface on the car window.</p>
+				<p> After the last milestone where we presented a poster of our ideas and gathered feedback, we were set on merging the best ideas from the suite. In addition, we further investigated the current capabilities of Smart Key Systems on the market and decided to focus on a revised design that could augment these. Therefore, we preserve the ways in which current Smart Keys work like proximity sensing and door handle touches that automatically unlock the car, but we are adapting those activities and injecting our own system elements.</p>
+				<p>In short, our prototype strives for look- and-feel realism wherever possible, and functional realism to the extent that is appropriate and necessary for the two studies. Users should get a good sense for how this system would fit into their everyday car use.</p>
+				<hr>
+				<h2>System Requirements</h2>
+				<p>We decided that interaction environment must plausibly simulate being at the exterior door of a car, and that the information display needed to work and be visible in all the environments a car would be: from bright sun to dark night, in all weather, in cramped parking spots, and in crowded areas.
+The key-object prototype must be as Smart-Key like as possible. It should be a handheld or pocketed object, should operate wirelessly without any kind of login or authentication - it is an authenticating object after all. It should resemble existing keys. The communication should strive to be two-way and multimodal. First, there should be a way to detect and respond to proximity, and second, there should be a way to communicate among keys and car at long distances over radio or the web.</p>
+				<p>Our prototype does not need to address any of the information gathering problems of GPS tracking and logging, usage metrics, etc. These and the calendar activities will be simulated or scripted. Through this process of design, our initial design alternativesthat took the form of Key+, Wheelman,
+and Smartphone App evolved into the combination of a Car Window Display and the Key+ Community Smart Key System.</p>
+				<hr>
 
-				<p>Each of our designs interacts with this backend system in different ways.</p>
+				<h2>Prototype Design Criteria</h2>
+				<p>As car-like as possible in environment, appearance, and materials.
+Use a real car or real car parts and accessories.</p>
+				<p>Harness a car window into a video display using projection and holographic film.</p>
+				<p>As key-like as possible in look, feel, and actions: handheld, thumbable, wireless two-way communication.</p>
+				<p>Respond to the presence of the user and discern their identity without any action, either through actual function or through wizard-of-oz.</p>
+				<p>
+System will be in public, so protect the privacy of the user when showing information by not displaying it too prominently.</p>
+				<hr>
+				<h2>Features of Current Prototype</h2>
+				<h3>Equipment and Hardware</h3>
+				<p>Car Door</p>
+				<p>Pico Projector Notebook Computer Smartphones</p>
+				<img src="img/proto-flow.png">
+				<h3>Software</h3>
+				<p>HTML5 Capable Web Browser on Computer and Smartphone</p>
+				<p>Node.js Server to process real-time requests from simulated key</p>
+				<p>JQuery JavaScript Library to make manipulate User Interface elements visible to the user.</p>
+				<p>Socket.io JavaScript Library to support HTML5 WebSockets, a feature that allows a server to pass messages to web browsers without the overhead of traditional polling mechanisms or JavaScript AJAX requests.</p>
+				<hr>
+				
+				<h2>How Everything Comes Together</h2>
+				<p>We use a MacBook Pro to run the Node server implementing the jQuery and SocketIO libraries to handle the interaction. Socket.io enables us to use web browsers on multiple devices to exchange messages. This way, interactions made on one web page can change the view of a different web page on another web browser.</p>
+				<p>We use the Safari web browser on an iPhone to simulate Key+. It shows an image of a smart key, locked in a full-screen web view with clickable buttons. It may also support timers and indicator lights. A click on Key+ can send messages to the server without refreshing the page, masking the reality that it is a webpage and not a physical object. In addition, Socket.io on the smartphone browser means that multiple Key+ simulations can co-interact with the server at the same time. This means actions on a key are not limited to affecting only the primary view, but can also affect the other keys’ states, all in real time.</p>
+				<img src="img/proto-1.png">
+				<p> Using JavaScript, we populate the views on the window page dynamically following the users interaction with the key page. We have an extensible structure for defining page elements that will permit several scripted interactions and allow for some exploration without implementing a fully functioning database. Because we use a static model and not simply a fixed sequence of preset views, we can enable exploration and error recovery with minimal overhead. In addition, because of this orthogonality between Model and View we can swap in different models without drastic changes to the interface.
+Since we have used HTML5 websockets, we have the power to directly manipulate all views of system from a controller page. This will enable us to reach in during the experiments and control anything we need to.</p>
+				<p> We simulate the car via a freestanding door. The car door is an actual door from a 1995 Nissan Maxima, purchased at a salvage yard. It is mounted on a height adjustable stand for accurate positioning to model the environment of the exterior of a car. To further refine our door, we intend to add lighting around the door handle and a speaker to play convincing door servo sounds for lock and unlock actions. This audio would play from the laptop audio output, with the synchronized action originating from the iPhone web browser.</p>
+				<p> The laptop external display port shows another full screen view of the Google Chrome web browser. This is sent to a digital projector set up for back projection and located behind the car door. The window of the door has an area treated with projection film to scatter the light and provide an image surface visible in daylight. The film is partially opaque, so we place it in the blind spot for the driver in a narrow column adjacent the B-pillar at the driver’s left shoulder.</p>
+				<hr>
+				<h2>Implementation Choices</h2>
+				<p>We chose to use Socket.IO and not a lower fidelity solution like paper since we can have multiple keys connected to the system at once with our implementation. We may connect to the same system and concurrently simulate and trigger behaviors at every level of the User Interface.
+Usually, web interaction is limited to a single stateless session between one client and one server. In our system, there is a message passing scheme between all the Key+ simulations, the car window display and the experiment controllers. An action in any element can trigger changes in any other element, which may also be controlled. This is powerful for scripting the evaluation and simulation of a community scenario.</p>
+				<p>We use Node.js to host our server application as it will support extending our prototype to have a true interactive data model later, if we can get it to work. We are using the Git version tracking system to enable effortless data logging. We may save our project as a different branch for each distinct trial as we conduct our experiment and log all server activity in that unique branch. This way each new trial remains separate without worrying about overwriting or having to parse confusing and long logs of user interactions. This process has the clear advantage of allowing us to record states and interactions through each trial in a way to allow for meaningful analysis.</p>
+				<hr>
+				
+				<h2>Visibility, Obstruction and Image Plane on Glass</h2>
+				<p>Originally, we hoped to have a transparent display surface using holographic film. Performance of the film was excellent in the dark or low light. However, too much light passes through the film without scattering as intended. In daylight conditions, even with high contrast coloration, we feared it would not be visible enough.</p>
+				<p>Clear film would have enabled a display filling the entire window. Early sketches of our design involved using a large area of the window. We contacted Screen Solutions International (ssidisplays.com), a specialty projection supply company, and requested samples of their range of projection on glass display films. They sell three types of film, varying in translucence (or opacity). The transparent film is usually for holographic effects. It allows most light to pass through the medium, and scatters only a small percentage -- much more than untreated glass, but not enough for daylight visibility. The two other grades were increasingly more opaque. We opted to use a frosted translucent film to get the best daylight performance. Since a partially opaque area on the window effects visibility while driving the car, we sketched a few possible layouts for the image location to minimize this impact. One idea was to place the film in a strip along the lower edge of the window. It could rise out and retract as needed. This added mechanical complexity. Locating along the lower edge of the window would also make it more difficult for taller users to see the interface.</p>
+				<p>Instead, we opted for a vertical column that could work for different users heights and different models of vehicle. We placed the film in a blind spot and hope to evaluate whether the placement effects driving visibility.</p>
+				<hr>
 
 			</div>
 		</section>

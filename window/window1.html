@@ -34,7 +34,7 @@
 		footer{text-align:center;padding:10px;}
 		footer img{}
 		
-		#step2,#step2_1,#step2_2,#step2_minus1, #step2_join,#step2_joined,#step2_minus2,#step2_drive,#step3, #step2_joined2{display:none;}
+		#step2,#step2_1,#step2_2,#step2_minus1,#step2_minus2,#step2_drive,#step3{display:none;}
 		#step2_drive{bottom:150px;}
 
 		</style>
@@ -86,14 +86,7 @@
 			<li class="event off"><a class="a4" href="#"><img src="clock.png">9:40 Andy</a></li>
 			</ul>
 			
-			<ul id="step2_join">
-			<h2>Do you want to join Andy's trip at 4:30?</h2>
-
-			<li class="on"><a class="o1 active" href="#">Join Trip</a></li>
-			<li class="on"><a class="o2" href="#">Don't Join Trip</a></li>
-			</ul>
-
-	<ul id="step2">
+			<ul id="step2">
 			<h2>I'm free till 4:30PM.</h2>
 
 			<li class="on"><a class="o1 active" href="#">+15 Minutes</a></li>
@@ -148,9 +141,7 @@
 			<li class="on"><a class="a2" href="#">Back</a></li>
 			</ul>
 		
-
-
-						<ul id="step2_drive">
+			<ul id="step2_drive">
 			<h2>Car Reserved.</h2>
 			<h3><img src="clock.png">Start: 4:30PM</h3>
 			<h3><img src="clock.png">End: 5:30PM</h3>
@@ -158,35 +149,9 @@
 
 			<li class="offc"><a href="#">Ready!</a></li>
 			</ul>
-			
-			<ul id="step2_join">
-			<h2>Do you want to join Andy's trip at 4:30?</h2>
-
-			<li class="on"><a class="o1 active" href="#">Join Trip</a></li>
-			<li class="on"><a class="o2" href="#">Don't Join Trip</a></li>
-			</ul>
-
-			<ul id="step2_joined">
-			<h2>I'm free till 4:30PM.</h2>
-
-			<li class="on"><a class="o1 active" href="#">Drive Now</a></li>
-			<li class="on"><a class="o2" href="#">Car Summary</a></li>
-			<li class="off"><a class="o3" href="#">Edit Trip</a></li>
-			<br>
-			<li class="event on"><a class="a1" href="#"><img src="clock.png">4:30 Andy and Keenan...</a></li>
-			<li class="event on"><a class="a2" href="#"><img src="clock.png">6:45 Abhishek to Moes</a></li>
-			<li class="event off"><a class="a3" href="#"><img src="clock.png">7:30 Andy</a></li>
-			<li class="event off"><a class="a4" href="#"><img src="clock.png">9:40 Andy</a></li>			</ul>
-			
-			<ul id="step2_joined2">
-			<h2>You are scheduled to go with Andy at 4:30PM.</h2>
-
-			<li class="on"><a class="o1 active" href="#">Leave Trip</a></li>
-			<li class="on"><a class="o2" href="#">Back</a></li>
-			</ul>
-
 
 			<footer>
+				
 				<span><img src="http://abhishek.im/gatech/6750/window/_lock.png"></span>
 			</footer>
 
@@ -206,10 +171,7 @@
 	var level=1;
 	
 	
-	var l = {o1: "#step2", o2: "#step3", a1:"#step2_join" };
-	var step2_join ={o1:"#step2_joined", o2:"#l"};
-	var step2_joined ={a1:"#step2_joined2"};
-	var step2_joined2 ={o1:"#l",o2:"#step2_joined"};
+	var l = {o1: "#step2", o2: "#step3" };
 
 	var step2={o1:"#step2_1", o3: "#step2_minus1", a1:"#step2_drive"};
 	

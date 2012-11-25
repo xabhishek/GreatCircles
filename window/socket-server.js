@@ -18,6 +18,19 @@ function handler (req, res) {
     res.end(data);
   });
   }
+  else if (req.url=='/clock.png'){
+	  fs.readFile(__dirname + '/clock.png',
+  function (err, data) {
+    if (err) {
+      res.writeHead(500);
+      return res.end('Error loading index.html');
+    }
+
+    res.writeHead(200);
+    res.end(data);
+  });
+  }
+
   else{
   fs.readFile(__dirname + '/index.html',
   function (err, data) {

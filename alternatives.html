@@ -30,15 +30,17 @@
 			<li>Section</li>
 			<li><a href="design.html">Brainstorming</a></li>
 			<li><a href="process.html">Design Process</a></li>
-			<li><a href="assumptions.html">Assumptions</a></li>
 			<li><a class="active" href="alternatives.html">Design Alternatives</a></li>
+			<li><a href="feedback.html">Feedback</a></li>
+
 			</ul>
 		</section>
-		
+
 		<section id="content">
 			<div class="content-1">
 				<h2>Smartphone App</h2>
 				<p>Our first design is an smartphone application for creating and reviewing scheduled uses of the car, for seeing the status of the car at a glance, and for viewing a graph of the proportionate share of car use per person.</p>
+				<img src="img/smartphone.png">
 				<p>For the schedule editing and viewing, our app follows the example of existing calendar designs. This provides consistency for users already familiar with smartphone calendar apps. We have month, day, and agenda views, and creating viewing and editing of the entries in the calendar is mostly no different from the current calendar implementations.</p>
 				<p>The schedule interaction does differ from conventional calender applications in one particular view. When a user is at the level of detail of a single reservation item, the view is uniquely different. A circular diagram is the central element. This diagram is shaped like a flower, with the center containing an icon representing the car, and arranged radially around the center are icons representing seats in the car. If the reservation has seats open, the user can touch a 'petal' and drag the icon toward the center. This action signifies joining the ride and now the user is enrolled in the reservation. Any updates to the reservation, ie. changes to the time or cancellation, send notifications to the users who joined in. In addition, reminders are sent (if desired) to the smartphone of all enrolled members of the reservation.</p>
 				<p>Another element of this design is focused on the current status of the car itself. This car centered view depicts the current availability of the car. If it is available it shows the car parked in its garage. If it isn't available, the garage is empty with an overlay noting who has the car currently, a short description of the active reservation, and a button to pull up the car's location (based on the real time GPS data) on the phone's map application. Below this 'garage' area of the view, there should be a condensed agenda panel showing the next scheduled use.  This was designed to be extremely obvious; this system could even be extended to make use of push notifications for further increased awareness.</p>
@@ -63,7 +65,7 @@
 				<h2>Wheelman</h2>
 				<p>
 				The car-share group has one shared tablet (probably an iPad running our app), kept at a central location.  This is used for planning, scheduling, and viewing usage data.  Each member of the car-share group has a smart wristband, which they wear when they want to interact with the rest of the system.  This band displays the time until the car is free (if someone else has it checked out) or due (if you have it checked out), the status of the car (via a simple light), and their current 'fuel' remaining.</p>
-
+				<img src="img/wheelman.png">
 				<p>Fuel is an evolved form of the resource allotment metaphors discussed earlier- it is measured and used in discrete 'cells,' of which one recharges per day.  A trip might cost 1-4 cells, depending on the reservation length, and the number of passengers (larger carpool = less overall fuel usage).  Fuel cells can also be traded between co-owners like currency by bumping fists with another user, or using the tablet interface.  The system checks whether or not you have enough fuel whenever you try and book a trip, or check out the car.  The wristband syncs wirelessly with a web server which holds the scheduling and usage information.</p> 
 
 				<p>Finally, the car itself has hardware capable of recognizing nearby wristbands, via RFID or otherwise.  When a user wants to take the car out, they use the tablet to book a trip, then simply enter the car with their wristband on.  They can then make a key turning motion near the key slot to start the car.  If they want to use the car on-the-spot, they can enter the car and tap the wheel.  If there is no reservation for the next hour, the car is automatically checked out to the user for one hour.  The wristband also allows users to receive messages and send simple replies.  For example, if another user requests to join your planned trip, your wristband might rumble, and a message would scroll across the small LED screen.  You could then tab the single button to accept their join request.  You could also request a ride by making the hitchhiking motion while wearing the wristband- in this case, other system users would get a rumble and LED notification of your need and location.  Location is tracked by a GPS inside of the wristband; in this way, usage could be tracked (potentially without the need for an in-car computer than does this).</p>
@@ -90,6 +92,8 @@
 			</p>
 			<p>The design revolves around every driver in the sharing system having a special wireless communication object that works in proximity to the car.
 			</p>
+			<img src="img/keyplusd.png">
+
 			<p>
 			Two alternate versions of this implementation differ in the way that access is granted. In one design, the key doesn't have any teeth. The teeth are a separate component that is kept in a kind of lock-box. Someone who wants to use the car has to visit the lock-box and physically connect the key blade to the smartkey base. Motivation for this idea came from wanting to have a central location to manage physical check-out of the single key.
 			</p>
