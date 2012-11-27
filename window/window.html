@@ -10,6 +10,9 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
 		<script type="text/javascript">
+		var untilTime = new Date();
+		untilTime.setHours(untilTime.getHours());
+		untilTime.setMinutes(untilTime.getMinutes()+45);
 		function writeTime() {
 			var currentTime = new Date();
 			var	hours = currentTime.getHours();
@@ -27,8 +30,23 @@
 			}
 			return time;
 		}
+		function writeTimeRemainingUntil(time) {
+			currentTime = new Date();
+			return (time.getHours() - currentTime.getHours())+':'+((time.getMinutes()-currentTime.getMinutes()+60)%60);
+		}
 		</script>
-				
+		
+		
+		<script id="movieTemplate" type="text/x-jquery-tmpl">
+			<li><b>${Name}</b> was released in ${ReleaseYear}.</li>
+			<div id="rect" style="">
+				<div class="start time" style="">7:00 PM</div>
+				<div class="name" style="">Username</div>
+				<div class="dest" style="">Starbucks Coffee</div>
+				<div class="end time" style="">9:00 PM</div>
+			</div>
+		</script>
+		
 	</head>
 	
 	<body>
@@ -49,12 +67,6 @@
 	</section>
 	<section id="menu">
 		<div id="calendar">Calendar
-			<div class="calItem">
-				<div class="start">12:00</div>
-				<div class="end">1:45</div>
-				<div class="name">Eric</div>
-				<div class="dest">Publix</div>
-			</div>
 		</div>
 	</section>
 	<footer>
@@ -73,6 +85,7 @@
 	//clock
 	setInterval( function () { 
 		$('#currenttime').html(writeTime());
+		$('#timefield2').html(writeTimeRemainingUntil(untilTime));
 		}, 100);
 		
 	function gcDoActionsClick (data) {
@@ -83,21 +96,23 @@
 
 		$.each(data.introstate.toptext, function(key,val) {
 			$('#'+key).text(val);
+			$('#timefield1').text(untilTime.getHours()+':'+untilTime.getMinutes());
+			$('#timefield2').text(writeTimeRemainingUntil(untilTime));
 		});
 		$.each(data.introstate.actions, function(key,val) {
 			$('#actions ul').append('<li id="'+key+
 									'" class="'+val.clickable+'" onclick="">'+
 									val.text+'</li>');
 		});
-/*		$('#actions ul li#action1').addClass('activ');
+		$('#actions ul li#action1').addClass('activ');
 		$.each(data.introstate.calendar, function(key,val) {
-			$('#calendar ul').append('<li id="'+key+
-									'" class= event"'+val.clickable+'">'+
-									val.time+
-									' : '+
-									val.text+'</li>');
+			$('#calendar').append('<div id="'+key+'">');
+			var ref = $('#'+key);
+			$.each(val, function(k,v) {
+				ref.append('<div id="'+k+'">'+v+'</div>');
+			});
 		});
-*/	};
+	};
 	
 	$(document).ready( function() {
 	

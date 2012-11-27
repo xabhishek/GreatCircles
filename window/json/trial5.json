@@ -42,7 +42,7 @@
                 "verticalgap": "true"
             },
             "action4": {
-                "text": "CLICKME",
+                "text": "PICKME",
                 "clickable": "true",
                 "verticalgap": "true"
             }

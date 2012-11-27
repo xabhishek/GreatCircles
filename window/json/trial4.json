@@ -15,7 +15,7 @@
 		},
 		"toptext":
 		{
-		"greeting":"Buon Giorno",
+		"greeting":"Hello",
 		"name":"Participant",
 		"othertext1": "You have the car until ",
 		"timefield1": "02:59:00",
@@ -26,7 +26,7 @@
 		{
 		"action1":{"text":"drive now", "clickable": "true", "verticalgap": "false"},
 		"action2":{"text":"end trip", "clickable": "true", "verticalgap": "false"},
-		"action3":{"text":"car summary", "clickable": "true", "verticalgap": "true"}
+		"action3":{"text":"usage summary", "clickable": "true", "verticalgap": "true"}
 		},
 		"calendar":
 		{

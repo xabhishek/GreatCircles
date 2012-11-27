@@ -1,6 +1,7 @@
-* {
+/* {
 	border: 1px solid gray;
-}
+}*/
+
 html{
 	background-color:#000000; 
 	padding:0;
@@ -16,6 +17,15 @@ body{
 	font-family:'Lato';
 	-webkit-transform: skew(170deg)
 }
+h1	{
+	font-size:20px;
+	font-family:'Lobster';
+	margin:0; 
+	padding:10px;
+	}
+
+
+
 header h1{float:left;}
 header h2{float:right;}
 header h1, header h2 {
@@ -23,6 +33,17 @@ header h1, header h2 {
 	padding:0;
 	font-size:20px;
 }
+
+#greeting {
+	font-size:22px;
+}
+
+#name {
+	font-size:30px;
+	color:#F4F444;
+	font-family:"Lobster"
+}
+
 header {
 	clear:both;
 	padding:10px;
@@ -39,46 +60,99 @@ footer {
 	left: 114px;
 }
 
-div#actions {
+section#messages {
+	font-size:18px;
+}
+
+div#actions > div{
+	text-align:center;
+	margin: 4px;
+	padding: 5px;
+	text-transform:uppercase;
 }
 
 div#calendar {
 }
 
-.calItem {
+.tiny{
+	color:gray;
+	font-size:8px; 
+	padding:0px;
+	margin:0px 12px;
+	text-align:right;
+}
+.super{
+	position:absolute; 
+	margin:0px 3px;
+	text-align:left;
+	top:0px;
+	left:0px;
+	height:9px;
+	width:80px;
+}
+
+.superend{
+	position:absolute; 
+	margin:0px 3px;
+	text-align:left;
+	top:50px;
+	left:0px;
+	height:9px;
+	width:80px;
+}
+
+.calItem, #event1, #event2, #event3, #event4 {
 	position:relative; 
-	height:46px; 
-	width:274px;
+	height:100px; 
+	width:260px;
+	margin:3px;
+	padding:3px;
 }
 
 .start {
+	font-size:20px;
 	position:absolute; 
-	top:0px; 
+	margin-left:5px;
+	top:10px; 
 	left:0px; 
-	height: 20px; 
+	height: 40px; 
 	width:80px;
 }
 .end {
+	font-size:20px;
 	position:absolute; 
+	margin-left:5px;
 	bottom:0px; 
 	left:0px; 
-	height: 20px; 
+	height: 40px; 
 	width:80px;
 }
 
 .dest {
+	font-size:20px;
 	position:absolute; 
-	top:2px;
-	left:170px; 
+	top:54px;
+	left:100px; 
 	height: 40px;
-	width: 80px; 
+	width: auto; 
+	bottom:0px;
 }
 
 .name {
+	font-size:20px;
 	position:absolute; 
-	top:2px; 
-	left:84px;
+	top:12px; 
+	left:100px;
 	height: 40px; 
-	width: 80px; 
+	width: auto; 
+}
+.clickable {
+	background-color:#0A0A0A;
+	border: 4px solid;
+	border-color: #F4F444;
 
+}
+.activ {
+	color: #030303;
+	background-color:#F4F444;
 }
