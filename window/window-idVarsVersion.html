@@ -1,0 +1,266 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Window Prototype</title>
+
+		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+		<link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+
+		<script type="text/javascript">
+		function writeTime() {
+			var currentTime = new Date();
+			var	hours = currentTime.getHours();
+			var	minutes = currentTime.getMinutes();
+			var seconds = currentTime.getSeconds();
+			var	time;
+			if (minutes < 10) {
+				minutes = "0" + minutes;
+			}
+			time = hours % 12 + ":" + minutes + ":" + (seconds<10 ? "0"+seconds : seconds) + " ";
+			if (hours > 11) {
+				time += "PM";
+			} else {
+				time += "AM";
+			}
+			return time;
+		}
+		</script>
+	</head>
+	
+	<body>
+	<header>
+		<h1>Great Circles</h1>
+		<h2 id="currenttime"></h2>
+	</header>
+
+	<section id="messages">
+		<h2>Hello, <span id="name">Keenan</span>!</h2>			
+	</section>
+	
+	<section id="status">
+		<h2>I'm free till 4:30PM.</h2>		
+	</section>
+	
+	<section id="menu">
+
+		<section id="actions">
+		</section>
+
+		<ul id="l">
+			<h2>I'm free till 4:30PM.</h2>
+
+			<li class="on"><a class="o1 active" href="#">Drive Now</a></li>
+			<li class="on"><a class="o2" href="#">Car Summary</a></li>
+			<li class="off"><a class="o3" href="#">Edit Trip</a></li>
+			<br>
+			<li class="event on"><a class="a1" href="#"><img src="clock.png">4:30 Andy to Tom's Flat</a></li>
+			<li class="event on"><a class="a2" href="#"><img src="clock.png">6:45 Abhishek to Moes</a></li>
+			<li class="event off"><a class="a3" href="#"><img src="clock.png">7:30 Andy</a></li>
+			<li class="event off"><a class="a4" href="#"><img src="clock.png">9:40 Andy</a></li>
+			</ul>
+		<ul id="step2_join">
+			<h2>Do you want to join Andy's trip at 4:30?</h2>
+
+			<li class="on"><a class="o1 active" href="#">Join Trip</a></li>
+			<li class="on"><a class="o2" href="#">Don't Join Trip</a></li>
+		</ul>
+
+		<ul id="step2">
+			<h2>I'm free till 4:30PM.</h2>
+
+			<li class="on"><a class="o1 active" href="#">+15 Minutes</a></li>
+			<li class="offc"><a class="o2" href="#"><span>30</span> Minutes</a></li>
+			<li class="on"><a class="o3" href="#">-15 Minutes</a></li>
+			<br>
+			<li class="on"><a class="a1" href="#">Drive Now</a></li>
+			<li class="on"><a class="a2" href="#">Back</a></li>
+		</ul>
+
+		<ul id="step2_1">
+			<h2>I'm free till 4:30PM.</h2>
+
+			<li class="on"><a class="o1 active" href="#">+15 Minutes</a></li>
+			<li class="offc"><a class="o2" href="#"><span>45</span> Minutes</a></li>
+			<li class="on"><a class="o3" href="#">-15 Minutes</a></li>
+			<br>
+			<li class="on"><a class="a1" href="#">Drive Now</a></li>
+			<li class="on"><a class="a2" href="#">Back</a></li>
+		</ul>
+
+		<ul id="step2_2">
+			<h2>I'm free till 4:30PM.</h2>
+
+			<li class="off"><a class="o1 active" href="#">+15 Minutes</a></li>
+			<li class="offc"><a class="o2" href="#"><span>60</span> Minutes</a></li>
+			<li class="on"><a class="o3" href="#">-15 Minutes</a></li>
+			<br>
+			<li class="on"><a class="a1" href="#">Drive Now</a></li>
+			<li class="on"><a class="a2" href="#">Back</a></li>
+		</ul>
+
+		<ul id="step2_minus1">
+			<h2>I'm free till 4:30PM.</h2>
+
+			<li class="on"><a class="o1" href="#">+15 Minutes</a></li>
+			<li class="offc"><a class="o2" href="#"><span>15</span> Minutes</a></li>
+			<li class="on"><a class="o3 active" href="#">-15 Minutes</a></li>
+			<br>
+			<li class="on"><a class="a1" href="#">Drive Now</a></li>
+			<li class="on"><a class="a2" href="#">Back</a></li>
+		</ul>
+			
+		<ul id="step2_minus2">
+			<h2>I'm free till 4:30PM.</h2>
+
+			<li class="on"><a class="o1 active" href="#">+15 Minutes</a></li>
+			<li class="offc"><a class="o2" href="#"><span>0</span> Minutes</a></li>
+			<li class="off"><a class="o3" href="#">-15 Minutes</a></li>
+			<br>
+			<li class="on"><a class="a1" href="#">Drive Now</a></li>
+			<li class="on"><a class="a2" href="#">Back</a></li>
+		</ul>
+		
+		<ul id="step2_drive">
+			<h2>Car Reserved.</h2>
+			<h3><img src="clock.png">Start: 4:30PM</h3>
+			<h3><img src="clock.png">End: 5:30PM</h3>
+			<h3>Time Remaining: 1 hour</a></h3>
+
+			<li class="offc"><a href="#">Ready!</a></li>
+		</ul>
+			
+		<ul id="step2_join">
+			<h2>Do you want to join Andy's trip at 4:30?</h2>
+
+			<li class="on"><a class="o1 active" href="#">Join Trip</a></li>
+			<li class="on"><a class="o2" href="#">Don't Join Trip</a></li>
+		</ul>
+
+		<ul id="step2_joined">
+			<h2>I'm free till 4:30PM.</h2>
+
+			<li class="on"><a class="o1 active" href="#">Drive Now</a></li>
+			<li class="on"><a class="o2" href="#">Car Summary</a></li>
+			<li class="off"><a class="o3" href="#">Edit Trip</a></li>
+			<br>
+			<li class="event on"><a class="a1" href="#"><img src="clock.png">4:30 Andy and Keenan...</a></li>
+			<li class="event on"><a class="a2" href="#"><img src="clock.png">6:45 Abhishek to Moes</a></li>
+			<li class="event off"><a class="a3" href="#"><img src="clock.png">7:30 Andy</a></li>
+			<li class="event off"><a class="a4" href="#"><img src="clock.png">9:40 Andy</a></li>			</ul>
+			
+		<ul id="step2_joined2">
+			<h2>You are scheduled to go with Andy at 4:30PM.</h2>
+
+			<li class="on"><a class="o1 active" href="#">Leave Trip</a></li>
+			<li class="on"><a class="o2" href="#">Back</a></li>
+		</ul>
+
+
+		<footer>
+			<span><img src="http://abhishek.im/gatech/6750/window/_lock.png"></span>
+		</footer>
+	</section>
+	</body>
+
+	<script src="/socket.io/socket.io.js"></script>
+		
+
+	<script>
+	var socket = io.connect();
+
+	setInterval( function () { 
+		$('#currenttime').html(writeTime());
+		}, 100);
+	
+
+	var	prevState="a";
+	var prevLevel="1";
+	var state="a";
+	var level=1;
+	
+	
+	var l = {o1: "#step2", o2: "#step3", a1:"#step2_join" };
+	var step2_join ={o1:"#step2_joined", o2:"#l"};
+	var step2_joined ={a1:"#step2_joined2"};
+	var step2_joined2 ={o1:"#l",o2:"#step2_joined"};
+
+	var step2={o1:"#step2_1", o3: "#step2_minus1", a1:"#step2_drive"};
+	
+	var step2_1={o1:"#step2_2", o3: "#step2", a1:"#step2_drive"}
+	var step2_2={o3: "#step2_1", a1:"#step2_drive"}
+	
+	var step2_minus1={o1:"#step2", o3: "#step2_minus2", a1:"#step2_drive"};
+	var step2_minus2={o1:"#step2_minus1", a1:"#step2_drive"};
+
+	function refreshText(){
+
+	}
+	
+	$(document).ready( function() {
+	
+		$.getJSON('participant.json', function(data) {
+			$.each(data, function(key,val){
+			  $('#'+key).text(val);
+			});
+		});
+		
+		$.getJSON('start.json', function(data) {
+			alert('doin start');
+		});
+
+	});
+
+	// the part where the window listens to the remote
+	socket.on('msg', function (data) {
+		 if (data=="UNLOCK") {
+			 $("footer span img").attr("src","http://abhishek.im/gatech/6750/window/_unlock.png").effect("pulsate", { times:4 }, 6000);
+			 
+			 $("#menu ul li a.active").removeClass("active");
+		     state = prevState;
+		     level = prevLevel;
+		     
+		     $("#menu ul li.on").first().find("a").addClass("active");
+		     refreshText();
+
+
+	    }
+
+	    if (data=="UP") {
+	    	if ($("#menu ul li a.active").parent().prevAll().hasClass("on"))
+	    	 $("#menu ul li a.active").parent().not(':first-child').find("a.active").removeClass("active").parent().prevAll(".on").first().children().addClass("active");
+	    }
+	    if (data=="DOWN") {
+	    	if ($("#menu ul li a.active").parent().nextAll().hasClass("on"))
+	    	 $("#menu ul li a.active").parent().not(':last-child').find("a.active").removeClass("active").parent().nextAll(".on").first().children().addClass("active");
+	    }
+	    if (data=="ENTER") {
+		     var o = $("#menu ul li a.active").removeClass("active").attr('class');
+		     
+		     var x = $("#menu ul:visible").attr("id");
+		     $("#menu ul:visible").toggle();
+		     $(eval(x + "." + o )).toggle();
+		     
+		     
+		     $("#menu ul:visible li.on").first().find("a").addClass("active");
+	    } 	
+	    
+	    if (data=="RED") {
+		     
+		     $("#menu ul li a.active").removeClass("active");
+		     state = prevState;
+		     level = prevLevel;
+		     
+		     $("#menu ul li").first().find("a").addClass("active");
+		     refreshText();
+	    } 	       
+       
+ 	       
+ 	       
+	});
+
+	</script>
+</html>

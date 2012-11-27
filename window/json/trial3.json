@@ -1,0 +1,48 @@
+
+// trial 3
+
+{
+ "blank_example": {
+ 	"screenstate":{
+ 	},
+ 	"keystate":{
+ 	},
+ 	"toptext":{	
+ 	},
+ 	"actions":{},
+ 	"calendar":{},
+ 	
+ },
+ "introstate":{
+ 	// keep off until they are in range
+ 	
+ 	"screenstate":
+ 	{
+ 	"screen":"off",
+ 	"locked":"locked"
+ 	},
+ 	
+ 		"keystate": 
+	{"keylight":"off",
+	"carlight":"green",
+	"timer":"0:45",
+	"keybacklights":"off"
+	},
+ 	
+ 	// this is just here for default
+	"toptext":
+	{
+	},
+	
+	
+	"actions":
+	{
+	},
+	
+	
+	"calendar":
+	{
+
+	}
+ }
+ }

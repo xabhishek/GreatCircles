@@ -1,0 +1,52 @@
+{
+ "blank_example": {
+ 	"screenstate":{
+ 	},
+ 	"keystate":{
+ 	},
+ 	"toptext":{	
+ 	},
+ 	"actions":{},
+ 	"calendar":{}
+ },
+ "introstate":{
+  	"screenstate":
+ 	{
+ 	"screen":"on",
+ 	"locked":"locked"
+ 	},
+ 	
+ 	"keystate": 
+	{"keylight":"on",
+	"carlight":"green",
+	"timer":"2:59",
+	"keybacklights":"on"
+	},
+ 	
+	"toptext":
+	{
+	"greeting":"Hello",
+	"name":"testname",
+	"othertext1": "You have the car until ",
+	"timefield1": "02:59:00",
+	"othertext2": "Remaining time:",
+	"timefield2": "02:59:00"
+	},
+	
+	
+	"actions":
+	{
+	"action1":{"text":"thing1", "clickable": "true", "verticalgap": "false"},
+	"action2":{"text":"thing2", "clickable": "true", "verticalgap": "false"},
+	"action3":{"text":"thing3", "clickable": "true", "verticalgap": "true"},
+	"action4":{"text":"CLICKME","clickable": "true", "verticalgap": "true"},
+	"action3":{"text":"thing4", "clickable": "true", "verticalgap": "true"}
+	},
+	
+	
+	"calendar":
+	{
+	}
+ }
+ }
+ 

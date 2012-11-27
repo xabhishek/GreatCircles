@@ -1,0 +1,50 @@
+{
+	"introstate":
+	{
+	 	"screenstate":
+	 	{
+	 	"screen":"off",
+		"locked":"locked"
+		},
+		"keystate": 
+		{
+		"keylight":"on",
+		"carlight":"green",
+		"timer":"2:59",
+		"keybacklights":"on"
+		},
+		"toptext":
+		{
+		"greeting":"Hello",
+		"name":"Bill the Blue",
+		"othertext1": "You have the car until ",
+		"timefield1": "02:59:00",
+		"othertext2": "Remaining time:",
+		"timefield2": "02:59:00"
+		},
+		"actions":
+		{
+		"action1":{
+			"text":"drive now", 
+			"clickable": "clickable", 
+			"verticalgap": "false"
+		},
+		"action2":{
+			"text":"end trip", 
+			"clickable": "clickable", 
+			"verticalgap": "false"
+		},
+		"action3":{
+			"text":"car summary", 
+			"clickable": "clickable", 
+			"verticalgap": "true"
+			}
+		},
+		"calendar":
+		{
+		"event1":{"time": "4-5", "text":"Frank to Moe's", "public": "true", "clickable": "clickable", "link":"0"},
+		"event2":{"time":"6-7", "text": "Sally to store", "public": "true", "clickable": "clickable", "link":"1"},
+		"event3": {"time": "8-10", "text": "Gerome", "public": "false", "clickable": "", "link":"none"}
+		}
+	}
+}

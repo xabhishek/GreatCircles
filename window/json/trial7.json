@@ -1,0 +1,346 @@
+// need to add current time to all of these times
+// right now it is always 12 noon??
+// trial 7
+
+{
+"blank_example": {
+ 	"screenstate":{
+ 	},
+ 	"keystate":{
+ 	},
+ 	"toptext":{	
+ 	},
+ 	"actions":{
+ 	},
+ 	"calendar":{
+ 	}	
+ },
+"introstate":{	
+ 	"screenstate": {
+		"screen":"on",
+		"locked":"locked"
+ 	},
+		"keystate": {
+		"keylight":"on",
+		"carlight":"off",
+		"timer":"04:00",
+		"keybacklights":"on"
+	},
+ 	"toptext": {
+		"greeting":"Hello",
+		"othertext1": "Car is free until",
+		"timefield1": "04:00:00",
+		"othertext2": "",
+		"timefield2": ""
+	},
+	"actions": {
+		"action1": {
+			"text":"drive now",
+			"clickable": "true",
+			"verticalgap": "false"
+		},
+		"action3": {
+			"text":"car summary", 
+			"clickable": "true", 
+			"verticalgap": "true"
+		}
+	},
+	"calendar": {
+		"event1": {
+			"time": "4-5", 
+			"user":"Frank",
+			"dest":"Moe's", 
+			"public": "true", 
+			"clickable": "true", 
+			"link":"0"
+		},
+		"event2": {
+			"time":"6-7", 
+			"text": "Sally to store", 
+			"public": "true", 
+			"clickable": "true", 
+			"link":"1"
+		},
+		"event3": {
+			"time": "8-10", 
+			"text": "Gerome",
+			"public": "false", 
+			"clickable": "false", 
+			"link":"none"
+		}
+	}
+}, 
+"action1clicked": {
+ 	"toptext":{	
+ 	"greeting":"Hello",
+	"name":"testname"
+	"othertext1": "Car is free for: ",
+	"timefield1": "04:00:00",
+	"othertext2": "Reserve car for: ",
+	"timefield2": ""
+ 	},
+ 	
+ 	"actions":{
+ 	"t2action1":{"text":"+ 15", "clickable": "true", "verticalgap": "false"},
+ 	"t2action2":{"text":"TIMEVARIABLE", "clickable": "false", "verticalgap": "false"},
+ 	"t2action3":{"text":"- 15", "clickable": "true", "verticalgap": "false"},
+ 	"t2action4":{"text":"drive now", "clickable": "true", "verticalgap": "true"},
+ 	"t2action5":{"text":"back", "clickable": "true", "verticalgap": "false"},
+ 	},
+ 	"calendar":{},
+   },
+"t2action4clicked": {
+ 	"screenstate":{
+	 	"locked":"unlocked"
+ 	},
+ 	"keystate":{
+ 		"carlight":"green"
+ 		"timer":"00:45"
+ 	},
+ 	"toptext":{	
+ 		"othertext1": "Logged trip started- you have the car until: "
+ 		"timefield1": "12:45:00",
+		"othertext2": "Remaining time: ",
+		"timefield2": "00:45:00"
+ 	},
+ 	"actions":{
+ 		"t3action1":{"text":"got it!", "clickable": "true", "verticalgap": "false"}
+ 	},
+ 	"calendar":{},
+ }, 
+"t3action1": {
+	 "screenstate":"off"
+ },
+"t2action5clicked": {
+ 	
+ 	"screenstate":
+ 	{
+ 	"screen":"on",
+ 	"locked":"locked"
+ 	},
+ 	
+ 	"keystate": 
+	{"keylight":"on",
+	"carlight":"off",
+	"timer":"4:00",
+	"keybacklights":"on"
+	},
+ 	
+
+	"toptext":
+	{
+	"greeting":"Hello",
+	"name":"testname"
+	"othertext1": "Car is free until",
+	"timefield1": "04:00:00",
+	"othertext2": "",
+	"timefield2": ""
+	},
+	
+	
+	"actions":
+	{
+	"action1":{"text":"drive now", "clickable": "true", "verticalgap": "false"},
+	"action3":{"text":"car summary", "clickable": "true", "verticalgap": "true"}
+	},
+	
+	
+	"calendar":
+	{
+	"event1":{"time": "4-5", "text":"Frank to Moe's","public": "true", "clickable": "true", "link":"0"},
+	"event2":{"time":"6-7", "text": "Sally to store", "public": "true", "clickable": "true", "link":"1"},
+	"event3": {"time": "8-10", "text": "Gerome","public": "false", "clickable": "false", "link":"none"}
+	}
+ },
+"event1clicked": {
+ 	"toptext":{	
+	"greeting":"Hello",
+	"name":"testname"
+	"othertext1": "Join Frank's trip to Moe's from "
+	"timefield1": "4:00 to 5:00 ?"
+ 	},
+ 	"actions":{
+ 	"t3action1":{"text":"Join", "clickable": "true", "verticalgap": "false"},
+ 	"t3action2":{"text":"Back", "clickable": "true", "verticalgap": "false"},
+ 	},
+ 	"calendar":{},
+ 	
+ },
+"t3action1clicked": {
+ 	"screenstate":
+ 	{
+ 	"screen":"on",
+ 	"locked":"locked"
+ 	},
+ 	
+ 	"keystate": 
+	{"keylight":"on",
+	"carlight":"off",
+	"timer":"4:00",
+	"keybacklights":"on"
+	},
+ 	
+
+	"toptext":
+	{
+	"greeting":"Hello",
+	"name":"testname"
+	"othertext1": "Car is free until",
+	"timefield1": "04:00:00",
+	"othertext2": "",
+	"timefield2": ""
+	},
+	
+	
+	"actions":
+	{
+	"action1":{"text":"drive now", "clickable": "true", "verticalgap": "false"},
+	"action3":{"text":"car summary", "clickable": "true", "verticalgap": "true"}
+	},
+	
+	
+	"calendar":
+	{
+	"event1":{"time": "4-5", "text":"Frank and I to Moe's","public": "true", "clickable": "true", "link":"0"},
+	"event2":{"time":"6-7", "text": "Sally to store", "public": "true", "clickable": "true", "link":"1"},
+	"event3": {"time": "8-10", "text": "Gerome","public": "false", "clickable": "false", "link":"none"}
+	}
+ }, 
+"t3action2clicked": {
+	// keep off until they are in range
+ 	
+ 	
+ 	"screenstate":
+ 	{
+ 	"screen":"on",
+ 	"locked":"locked"
+ 	},
+ 	
+ 	"keystate": 
+	{"keylight":"on",
+	"carlight":"off",
+	"timer":"4:00",
+	"keybacklights":"on"
+	},
+ 	
+
+	"toptext":
+	{
+	"greeting":"Hello",
+	"name":"testname"
+	"othertext1": "Car is free until",
+	"timefield1": "04:00:00",
+	"othertext2": "",
+	"timefield2": ""
+	},
+	
+	
+	"actions":
+	{
+	"action1":{"text":"drive now", "clickable": "true", "verticalgap": "false"},
+	"action3":{"text":"car summary", "clickable": "true", "verticalgap": "true"}
+	},
+	
+	
+	"calendar":
+	{
+	"event1":{"time": "4-5", "text":"Frank to Moe's","public": "true", "clickable": "true", "link":"0"},
+	"event2":{"time":"6-7", "text": "Sally to store", "public": "true", "clickable": "true", "link":"1"},
+	"event3": {"time": "8-10", "text": "Gerome","public": "false", "clickable": "false", "link":"none"}
+	}
+ 
+ } ,
+"event2clicked": {
+ 	"toptext":{	
+		"greeting":"Hello",
+		"name":"testname",
+		"othertext1": "Join Sally's trip to the store from ",
+		"timefield1": "6:00 to 7:00 ?"
+ 	},
+ 	"actions":{
+		"t4action1":{"text":"Join", "clickable": "true", "verticalgap": "false"},
+		"t4action2":{"text":"Back", "clickable": "true", "verticalgap": "false"}
+ 	},
+ 	"calendar":{},
+ }
+"t4action1clicked": {
+ 	"screenstate":
+ 	{
+ 	"screen":"on",
+ 	"locked":"locked"
+ 	},
+ 	
+ 	"keystate": 
+	{"keylight":"on",
+	"carlight":"off",
+	"timer":"4:00",
+	"keybacklights":"on"
+	},
+ 	
+
+	"toptext":
+	{
+	"greeting":"Hello",
+	"name":"testname"
+	"othertext1": "Car is free until",
+	"timefield1": "04:00:00",
+	"othertext2": "",
+	"timefield2": ""
+	},
+	
+	
+	"actions":
+	{
+	"action1":{"text":"drive now", "clickable": "true", "verticalgap": "false"},
+	"action3":{"text":"car summary", "clickable": "true", "verticalgap": "true"}
+	},
+	
+	
+	"calendar":
+	{
+		"event1":{"time": "4-5", "text":"Frank and I to Moe's","public": "true", "clickable": "true", "link":"0"},
+		"event2":{"time":"6-7", "text": "Sally to store", "public": "true", "clickable": "true", "link":"1"},
+		"event3":{"time": "8-10", "text": "Gerome","public": "false", "clickable": "false", "link":"none"}
+	}
+ }, 
+"t4action2clicked": {
+ 	"screenstate":
+ 	{
+		"screen":"on",
+		"locked":"locked"
+ 	},
+ 	
+ 	"keystate": 
+	{
+		"keylight":"on",
+		"carlight":"off",
+		"timer":"4:00",
+		"keybacklights":"on"
+	},
+ 	
+
+	"toptext":
+	{
+		"greeting":"Hello",
+		"name":"testname"
+		"othertext1": "Car is free until",
+		"timefield1": "04:00:00",
+		"othertext2": "",
+		"timefield2": ""
+	},
+		
+	"actions":
+	{
+		"action1":{"text":"drive now", "clickable": "true", "verticalgap": "false"},
+		"action3":{"text":"car summary", "clickable": "true", "verticalgap": "true"}
+	},
+	
+	
+	"calendar":
+	{
+		"event1":{"time": "4-5", "text":"Frank to Moe's","public": "true", "clickable": "true", "link":"0"},
+		"event2":{"time":"6-7", "text": "Sally and I to store", "public": "true", "clickable": "true", "link":"1"},
+		"event3":{"time": "8-10", "text": "Gerome","public": "false", "clickable": "false", "link":"none"}
+	} 
+  }
+}

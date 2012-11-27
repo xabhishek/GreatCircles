@@ -1,0 +1,27 @@
+{
+"introstate":{
+ 	"screenstate":
+ 	{
+ 	"screen":"off",
+ 	"locked":"locked"
+ 	},
+ 	"keystate": 
+	{"keylight":"off",
+	"carlight":"red",
+	"timer":"1:15",
+	"keybacklights":"off"
+	},
+	"toptext":
+	{
+	
+	},
+	"actions":
+	{
+	},
+	"calendar":
+	{
+	}
+ }
+ }
+
+
