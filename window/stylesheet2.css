@@ -1,0 +1,84 @@
+* {
+	border: 1px solid gray;
+}
+html{
+	background-color:#000000; 
+	padding:0;
+	z-index:-20;
+	height:100%;
+	}
+body{
+	margin:0 0 0 200px; 
+	background-color:black;
+	color:white;
+	width:300px;
+	height:100%;
+	font-family:'Lato';
+	-webkit-transform: skew(170deg)
+}
+header h1{float:left;}
+header h2{float:right;}
+header h1, header h2 {
+	margin:0;
+	padding:0;
+	font-size:20px;
+}
+header {
+	clear:both;
+	padding:10px;
+	width:280px;
+	height:20px;
+}
+section {
+	padding:10px;
+	width:280px;
+}
+footer {
+	position: absolute;
+	bottom: 0px;
+	left: 114px;
+}
+
+div#actions {
+}
+
+div#calendar {
+}
+
+.calItem {
+	position:relative; 
+	height:46px; 
+	width:274px;
+}
+
+.start {
+	position:absolute; 
+	top:0px; 
+	left:0px; 
+	height: 20px; 
+	width:80px;
+}
+.end {
+	position:absolute; 
+	bottom:0px; 
+	left:0px; 
+	height: 20px; 
+	width:80px;
+}
+
+.dest {
+	position:absolute; 
+	top:2px;
+	left:170px; 
+	height: 40px;
+	width: 80px; 
+}
+
+.name {
+	position:absolute; 
+	top:2px; 
+	left:84px;
+	height: 40px; 
+	width: 80px; 
+
+}

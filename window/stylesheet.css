@@ -28,7 +28,7 @@ body{
 .activ {
 	border: 3px solid green;
 }
-.rect {
+.calItem {
 	position:absolute; 
 	height:46; 
 	width:400

@@ -15,8 +15,8 @@
 		},
 		"toptext":
 		{
-		"greeting":"Hello",
-		"name":"Bill the Blue",
+		"greeting":"Buon Giorno",
+		"name":"Participant",
 		"othertext1": "You have the car until ",
 		"timefield1": "02:59:00",
 		"othertext2": "Remaining time:",
@@ -24,27 +24,36 @@
 		},
 		"actions":
 		{
-		"action1":{
-			"text":"drive now", 
-			"clickable": "clickable", 
-			"verticalgap": "false"
-		},
-		"action2":{
-			"text":"end trip", 
-			"clickable": "clickable", 
-			"verticalgap": "false"
-		},
-		"action3":{
-			"text":"car summary", 
-			"clickable": "clickable", 
-			"verticalgap": "true"
-			}
+		"action1":{"text":"drive now", "clickable": "true", "verticalgap": "false"},
+		"action2":{"text":"end trip", "clickable": "true", "verticalgap": "false"},
+		"action3":{"text":"car summary", "clickable": "true", "verticalgap": "true"}
 		},
 		"calendar":
 		{
-		"event1":{"time": "4-5", "text":"Frank to Moe's", "public": "true", "clickable": "clickable", "link":"0"},
-		"event2":{"time":"6-7", "text": "Sally to store", "public": "true", "clickable": "clickable", "link":"1"},
-		"event3": {"time": "8-10", "text": "Gerome", "public": "false", "clickable": "", "link":"none"}
+		"event1":{
+		"name":"Frank",
+		"start":"4:00pm",
+		"end":"5:00pm",
+		"dest":"Moe's",
+		"with":"",
+		"public":"true"
+		},
+				"event2":{
+		"name":"Sally",
+		"start":"6:00pm"
+		,"end":"8:00pm",
+		"dest":"campus",
+		"with":"",
+		"public":"true"
+		},
+				"event2":{
+		"name":"Gerome",
+		"start":"9:00pm"
+		,"end":"10:00pm",
+		"dest":"campus",
+		"with":"",
+		"public":"false"
+		}
 		}
 	}
 }

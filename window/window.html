@@ -5,7 +5,7 @@
 
 		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
-		<link href="stylesheet.css" rel="stylesheet" type="text/css"/>
+		<link href="stylesheet2.css" rel="stylesheet" type="text/css"/>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 
@@ -42,23 +42,25 @@
 		<h2><span id="othertext2"></span><span id="timefield2"></span></h2>		
 	</section>
 	<section id="menu">
-		<section id="actions">Actions
+		<div id="actions">Actions
 		  <ul>
 		  </ul>
-		</section>
-		<section id="calendar">Calendar
+		</div>
+	</section>
+	<section id="menu">
+		<div id="calendar">Calendar
 			<div class="calItem">
-				<div class="starttime">12:00</div>
-				<div class="endtime">1:45</div>
-				Name:<span class="name">Eric</div>
-				Destination:<span class="dest">Publix</div>
+				<div class="start">12:00</div>
+				<div class="end">1:45</div>
+				<div class="name">Eric</div>
+				<div class="dest">Publix</div>
 			</div>
-		</section>
+		</div>
 	</section>
 	<footer>
 		<span class="clickable">
 			<img alt="lock" id="lock" 
-				 src="http://abhishek.im/gatech/6750/window/_lock.png"/>
+				 src="_lock.png"/>
 		</span>
 	</footer>
 	<div id="debug"></div>
@@ -110,8 +112,6 @@
 		// get the first view
 		$.getJSON('trial4.json', function(data) {
 			gcParseJSON(data);
-//			$.each(data, function(key,val){
-//			});
 		});
 		
 		//final cleanup and status setting

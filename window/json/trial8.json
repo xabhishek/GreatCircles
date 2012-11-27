@@ -1,151 +1,172 @@
-// need to add current time to all of these times
-// right now it is always 12 noon
-// trial 7
-
-
-//important to play a redundant lock sound when user moves away
 {
- "blank_example": {
- 	"screenstate":{
- 	},
- 	"keystate":{
- 	},
- 	"toptext":{	
- 	},
- 	"actions":{},
- 	"calendar":{},
- },
- "introstate":{
- 	
- 	"screenstate":
- 	{
- 	"screen":"on",
- 	"locked":"locked"
- 	},
- 	
- 	"keystate": 
-	{"keylight":"on",
-	"carlight":"green",
-	"timer":"3:00",
-	"keybacklights":"on"
-	},
- 	
-
-	"toptext":
-	{
-	"greeting":"Hello TESTNAME",
-	"name":"testname"
-	"othertext1": "Trip in progress- open door to start driving!  You have the car until ",
-	"timefield1": "04:00:00",
-	"othertext2": "Remaining time: ",
-	"timefield2": " 2:00"
-	},
-	
-	
-	"actions":
-	{
-	"endtrip":{"text":"end trip", "clickable": "true", "verticalgap": "false"},
-	"tripsummary":{"text":"trip summary", "clickable": "true", "verticalgap": "false"},
-	"carsummary":{"text":"car summary", "clickable": "true", "verticalgap": "true"}
-	},
-	
-	
-	"calendar":
-	{
-	"event1":{"time": "4-5", "text":"Frank to Moe's","public": "true", "clickable": "true", "link":"0"},
-	"event2":{"time":"6-7", "text": "Sally to store", "public": "true", "clickable": "true", "link":"1"},
-	"event3": {"time": "8-10", "text": "Gerome","public": "false", "clickable": "false", "link":"none"}
-	}
- },
- 
- "endtripclicked":{
- 	"toptext":{	
- 	"greeting":"Hello",
-	"name":"testname"
-	"othertext1": "Are you sure you want to end your trip? ",
-	"othertext2": "Remaining time: ",
-	"timefield2": " 2:00"
- 	},
- 	"actions":{
- 	"endtrip2":{"text":"end trip", "clickable": "true", "verticalgap": "false"},
-	"goback":{"text":"back", "clickable": "true", "verticalgap": "false"},
-	},
- 	"calendar":{},
- },
- 
- "endtrip2clicked":{
- "toptext":{	
- "greeting":"Hello",
-"name":"testname"
-"othertext1": "Trip ended.",
- },
- 
- "keystate": 
-	{"keylight":"on",
-	"carlight":"off",
-	"timer":"5:00",
-	"keybacklights":"on"
-	},
-	
-	"actions":
-	{
-	},
-	
-	"calendar":
-	{
-	}
- 
- },
- 
- "gobackclicked":{
- 	
- 	"screenstate":
- 	{
- 	"screen":"on",
- 	"locked":"locked"
- 	},
- 	
- 	"keystate": 
-	{"keylight":"on",
-	"carlight":"green",
-	"timer":"3:00",
-	"keybacklights":"on"
-	},
- 	
-
-	"toptext":
-	{
-	"greeting":"Hello",
-	"name":"testname"
-	"othertext1": "Trip in progress.  You have the car until ",
-	"timefield1": "04:00:00",
-	"othertext2": "Remaining time: ",
-	"timefield2": " 2:00"
-	},
-	
-	
-	"actions":
-	{
-	"endtrip":{"text":"end trip", "clickable": "true", "verticalgap": "false"},
-	"tripsummary":{"text":"trip summary", "clickable": "true", "verticalgap": "false"},
-	"carsummary":{"text":"car summary", "clickable": "true", "verticalgap": "true"}
-	},
-	
-	
-	"calendar":
-	{
-	"event1":{"time": "4-5", "text":"Frank to Moe's","public": "true", "clickable": "true", "link":"0"},
-	"event2":{"time":"6-7", "text": "Sally to store", "public": "true", "clickable": "true", "link":"1"},
-	"event3": {"time": "8-10", "text": "Gerome","public": "false", "clickable": "false", "link":"none"}
-	}
- },
- 
-  "tripsummaryclicked":{
-  /// draw trip summary
- }
- 
-  "carsummaryclicked":{
-  // draw car summary
- }
- 
- 
+    "blank_example": {
+        "screenstate": {},
+        "keystate": {},
+        "toptext": {},
+        "actions": {},
+        "calendar": {}
+    },
+    "introstate": {
+        "screenstate": {
+            "screen": "on",
+            "locked": "locked"
+        },
+        "keystate": {
+            "keylight": "on",
+            "carlight": "green",
+            "timer": "3:00",
+            "keybacklights": "on"
+        },
+        "toptext": {
+            "greeting": "Hello TESTNAME",
+            "name": "testname",
+            "othertext1": "Trip in progress- open door to start driving!  You have the car until ",
+            "timefield1": "04:00:00",
+            "othertext2": "Remaining time: ",
+            "timefield2": " 2:00"
+        },
+        "actions": {
+            "endtrip": {
+                "text": "end trip",
+                "clickable": "true",
+                "verticalgap": "false"
+            },
+            "tripsummary": {
+                "text": "trip summary",
+                "clickable": "true",
+                "verticalgap": "false"
+            },
+            "carsummary": {
+                "text": "car summary",
+                "clickable": "true",
+                "verticalgap": "true"
+            }
+        },
+                     "calendar": {   
+        		"event1":{
+		"name":"Frank",
+		"start":"4:00pm",
+		"end":"5:00pm",
+		"dest":"Moe's",
+		"with":"",
+		"public":"true"
+		},
+				"event2":{
+		"name":"Sally",
+		"start":"6:00pm"
+		,"end":"8:00pm",
+		"dest":"campus",
+		"with":"",
+		"public":"true"
+		},
+				"event2":{
+		"name":"Gerome",
+		"start":"9:00pm"
+		,"end":"10:00pm",
+		"dest":"campus",
+		"with":"",
+		"public":"false"
+			}
+        }
+    },
+    "endtripclicked": {
+        "toptext": {
+            "greeting": "Hello",
+            "name": "testname",
+            "othertext1": "Are you sure you want to end your trip? ",
+            "othertext2": "Remaining time: ",
+            "timefield2": " 2:00"
+        },
+        "actions": {
+            "endtrip2": {
+                "text": "end trip",
+                "clickable": "true",
+                "verticalgap": "false"
+            },
+            "goback": {
+                "text": "back",
+                "clickable": "true",
+                "verticalgap": "false"
+            }
+        },
+        "calendar": {}
+    },
+    "endtrip2clicked": {
+        "toptext": {
+            "greeting": "Hello",
+            "name": "testname",
+            "othertext1": "Trip ended."
+        },
+        "keystate": {
+            "keylight": "on",
+            "carlight": "off",
+            "timer": "5:00",
+            "keybacklights": "on"
+        },
+        "actions": {},
+        "calendar": {}
+    },
+    "gobackclicked": {
+        "screenstate": {
+            "screen": "on",
+            "locked": "locked"
+        },
+        "keystate": {
+            "keylight": "on",
+            "carlight": "green",
+            "timer": "3:00",
+            "keybacklights": "on"
+        },
+        "toptext": {
+            "greeting": "Hello",
+            "name": "testname",
+            "othertext1": "Trip in progress.  You have the car until ",
+            "timefield1": "04:00:00",
+            "othertext2": "Remaining time: ",
+            "timefield2": " 2:00"
+        },
+        "actions": {
+            "endtrip": {
+                "text": "end trip",
+                "clickable": "true",
+                "verticalgap": "false"
+            },
+            "tripsummary": {
+                "text": "trip summary",
+                "clickable": "true",
+                "verticalgap": "false"
+            },
+            "carsummary": {
+                "text": "car summary",
+                "clickable": "true",
+                "verticalgap": "true"
+            }
+        },
+                    "calendar": {   
+        		"event1":{
+		"name":"Frank",
+		"start":"4:00pm",
+		"end":"5:00pm",
+		"dest":"Moe's",
+		"with":"",
+		"public":"true"
+		},
+				"event2":{
+		"name":"Sally",
+		"start":"6:00pm"
+		,"end":"8:00pm",
+		"dest":"campus",
+		"with":"",
+		"public":"true"
+		},
+				"event2":{
+		"name":"Gerome",
+		"start":"9:00pm"
+		,"end":"10:00pm",
+		"dest":"campus",
+		"with":"",
+		"public":"false"
+			}
+        }
+    }
+}

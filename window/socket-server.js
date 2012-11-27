@@ -8,6 +8,8 @@ app.listen(80);
 function handler (req, res) {
 
   var jsonpatt = new RegExp ('json$');
+  var imgpatt = new RegExp ('png$');
+  var csspatt = new RegExp ('css$');
 
   if (req.url=='/window.html'){
 	  fs.readFile(__dirname + '/window.html',
@@ -44,7 +46,18 @@ function handler (req, res) {
 	});
 
   }
-  else if (req.url=='/stylesheet.css') {
+  else if (csspatt.test(req.url)) {
+	fs.readFile(__dirname + req.url, function(err,data) { 
+		if (err) { 
+			res.writeHead(500); 
+			return res.end('stylesheet error '+err); 
+		}
+		res.writeHead(200);
+		res.end(data);
+	});
+
+  }
+  else if (imgpatt.test(req.url)) {
 	fs.readFile(__dirname + req.url, function(err,data) { 
 		if (err) { 
 			res.writeHead(500); 
