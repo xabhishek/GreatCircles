@@ -17,13 +17,13 @@
 	<section id="messages">
 		<span id="greeting">Hello, </span><span id="name">Keenan!</span>
 		<hr><h1 style="position:relative; left:-10px;">Status</h1>
-		<span id="othertext1">Car is free until</span><span id="timefield1">4:00PM</span><br>	
-		<span id="othertext2"></span><span id=""></span>
+		<span id="othertext1">You have the car until </span><span id="timefield1">1:00PM</span><br>	
+		<span id="othertext2">Remaining time: </span><span id="timefield2">3:45PM</span>
 	</section>
 	<section id="menu">
 		<div id="actions">
-		  	<div id="action1" class="clickable activ" onclick="">end trip</div>
-		  	<div id="action2" class="clickable" onclick="">drive now</div>
+		  	<div id="action1" class="clickable activ" onclick="">drive now</div>
+		  	<div id="action2" class="clickable" onclick="">end trip</div>
 		  	<div id="action3" class="clickable" onclick="">usage summary</div>
 		</div>
 	</section>
@@ -33,15 +33,15 @@
 				<div class="tiny super">start time</div>
 				<div class="start">4:00PM</div>
 				<div class="name">Frank</div>
-				<div class="dest">Moe's</div>
+				<div class="dest">Moe's - Tech Square</div>
 				<div class="tiny superend">end time</div>
 				<div class="end">5:00PM</div>
 			</div>
-			<div id="event2" class="calItem clickable" onclick="">
+			<div id="event2" class="calItem clickable">
 				<div class="tiny super">start time</div>
 				<div class="start">6:00PM</div>
-				<div class="name">Sally and <span id="alsoname">Keenan</span></div>
-				<div class="dest">Campus</div>
+				<div class="name">Sally</div>
+				<div class="dest">campus - meeting</div>
 				<div class="tiny superend">end time</div>
 				<div class="end">8:00PM</div>
 			</div>
@@ -49,7 +49,7 @@
 				<div class="tiny super">start time</div>
 				<div class="start">9:00PM</div>
 				<div class="name">Gerome</div>
-				<div class="dest">Campus</div>
+				<div class="dest">campus</div>
 				<div class="tiny superend">end time</div>
 				<div class="end">10:00PM</div>
 			</div>
@@ -66,10 +66,11 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 	<script type="text/javascript">
-		var keylight= "white"
-		var carlight= "white"
-		var hours= 4
-		var minutes = 00
+	var keylight= "white"
+		var carlight= "green"
+		var hours= 2
+		var minutes = 59
+	
 		var untilTime = new Date();
 		untilTime.setHours(untilTime.getHours());
 		untilTime.setMinutes(untilTime.getMinutes()+45);
@@ -103,7 +104,6 @@
 		$.getJSON('participant.json', function(data) {
 			$.each(data, function(key,val){
 			  $('#'+key).text(val);
-			  $('#'+alsoname).text(val);
 			  username=val;
 			});
 		});
@@ -112,8 +112,6 @@
 			$('#currenttime').html(writeTime());
 			$('#timefield2').html(writeTimeRemainingUntil(untilTime));
 			}, 100);
-			
-		$('#event2').effect("pulsate", {times:4},1000);
 	});
 	
 	
@@ -141,7 +139,6 @@
 	    }
 	    if (data=="ENTER") {
 	    	// perform the action on the clickable selection
-			alert($(".activ"));
 	    } 	
 	    if (data=="RED") {
 		    alert('red pressed'); 

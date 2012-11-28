@@ -18,13 +18,13 @@
 		<span id="greeting">Hello, </span><span id="name">Keenan!</span>
 		<span id="greeting">Hello, </span><span id="name2">MarySue!</span>
 		<hr><h1 style="position:relative; left:-10px;">Status</h1>
-		<span id="othertext1"><span id="name">Keenan!</span> has the car until: </span><span id="timefield1">2:00PM</span><br>	
+		<span id="othertext1"><span>MarySue and</span> <span id="alsoname">Keenan</span> have the car until: </span><span id="timefield1">2:00PM</span><br>	
 		<span id="othertext1">Time remaining: </span><span id="timefield1">0:45PM</span><br>	
 	</section>
 	<section id="menu">
 		<div id="actions">
 		  	<div id="action1" class="clickable activ" onclick="">end trip</div>
-		  	<div id="action2" class="clickable" onclick="">Add or remove from trip</div>
+		  	<div id="action2" class="clickable" onclick="">add or remove from trip</div>
 		  	<div id="action3" class="clickable" onclick="">trip summary</div>
 		  	<div id="action4" class="clickable" onclick="">usage summary</div>
 		</div>
@@ -68,6 +68,10 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 	<script type="text/javascript">
+			var keylight= "white"
+		var carlight= "green"
+		var hours= 4
+		var minutes = 00
 		var untilTime = new Date();
 		untilTime.setHours(untilTime.getHours());
 		untilTime.setMinutes(untilTime.getMinutes()+45);

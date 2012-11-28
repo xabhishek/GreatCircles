@@ -15,16 +15,18 @@
 	<hr style="margin:0px; padding: 0px; background-color:#F4F444"> 
 	<div class="tiny">system for community car ownership</div>
 	<section id="messages">
-		<span id="greeting">Hello, </span><span id="name">Keenan!</span>
+		<span id="greeting">Hello, </span><span id="name">Keenan!</span><br>
+		<span id="greeting">Hello, </span><span id="name2">MarySue!</span>
 		<hr><h1 style="position:relative; left:-10px;">Status</h1>
-		<span id="othertext1">Car is free until</span><span id="timefield1">4:00PM</span><br>	
-		<span id="othertext2"></span><span id=""></span>
+		<span id="othertext1"><span id="alsoname">Keenan!</span> has the car until: </span><span id="timefield1">2:00PM</span><br>	
+		<span id="othertext2">Time remaining: </span><span id="">0:45</span>
 	</section>
 	<section id="menu">
 		<div id="actions">
 		  	<div id="action1" class="clickable activ" onclick="">end trip</div>
-		  	<div id="action2" class="clickable" onclick="">drive now</div>
-		  	<div id="action3" class="clickable" onclick="">usage summary</div>
+		  	<div id="action2" class="clickable" onclick="window.location.href='window-trial12-a2.html'">add or remove</div>
+		  	<div id="action3" class="clickable" onclick="">this trip summary</div>
+		  	<div id="action4" class="clickable" onclick="">usage summary</div>
 		</div>
 	</section>
 	<section id="menu">
@@ -37,10 +39,10 @@
 				<div class="tiny superend">end time</div>
 				<div class="end">5:00PM</div>
 			</div>
-			<div id="event2" class="calItem clickable" onclick="">
+			<div id="event2" class="calItem clickable">
 				<div class="tiny super">start time</div>
 				<div class="start">6:00PM</div>
-				<div class="name">Sally and <span id="alsoname">Keenan</span></div>
+				<div class="name">Sally</div>
 				<div class="dest">Campus</div>
 				<div class="tiny superend">end time</div>
 				<div class="end">8:00PM</div>
@@ -68,7 +70,7 @@
 	<script type="text/javascript">
 		var keylight= "white"
 		var carlight= "white"
-		var hours= 4
+		var hours= 2
 		var minutes = 00
 		var untilTime = new Date();
 		untilTime.setHours(untilTime.getHours());
@@ -103,7 +105,7 @@
 		$.getJSON('participant.json', function(data) {
 			$.each(data, function(key,val){
 			  $('#'+key).text(val);
-			  $('#'+alsoname).text(val);
+			  $('#alsoname').text(val);
 			  username=val;
 			});
 		});
@@ -112,8 +114,6 @@
 			$('#currenttime').html(writeTime());
 			$('#timefield2').html(writeTimeRemainingUntil(untilTime));
 			}, 100);
-			
-		$('#event2').effect("pulsate", {times:4},1000);
 	});
 	
 	
