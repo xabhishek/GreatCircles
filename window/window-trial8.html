@@ -1,0 +1,145 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Window Prototype</title>
+		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+		<link href="stylesheet2.css" rel="stylesheet" type="text/css"/>
+	</head>
+	
+	<body>
+	<header>
+		<h1 id="logo">Great Circles</h1>
+		<h2 id="currenttime"></h2>
+	</header>
+	<hr style="margin:0px; padding: 0px; background-color:#F4F444"> 
+	<div class="tiny">system for community car ownership</div>
+	<section id="messages">
+		<span id="greeting">Hello, </span><span id="name">Keenan!</span>
+		<hr><h1 style="position:relative; left:-10px;">Status</h1>
+		<span id="othertext1">Trip in progress</span><span id="timefield1">4:00PM</span><br>	
+		<span id="othertext2">You have the car until</span><span id="timefield2">2:00</span>
+	</section>
+	<section id="menu">
+		<div id="actions">
+		  	<div id="action1" class="clickable activ" onclick="window.location.href='window-trial8-a1.html'">end trip</div>
+		  	<div id="action2" class="clickable" onclick="">trip summary</div>
+		  	<div id="action3" class="clickable" onclick="">usage summary</div>
+		</div>
+	</section>
+	<section id="menu">
+		<div id="calendar"><h1 style="position:relative; left:-10px;">Upcoming Trips</h1>
+			<div id="event1" class="calItem clickable">
+				<div class="tiny super">start time</div>
+				<div class="start">4:00PM</div>
+				<div class="name">Frank</div>
+				<div class="dest">Moe's</div>
+				<div class="tiny superend">end time</div>
+				<div class="end">5:00PM</div>
+			</div>
+			<div id="event2" class="calItem clickable">
+				<div class="tiny super">start time</div>
+				<div class="start">6:00PM</div>
+				<div class="name">Sally</div>
+				<div class="dest">Campus</div>
+				<div class="tiny superend">end time</div>
+				<div class="end">8:00PM</div>
+			</div>
+			<div id="event3" class="calItem clickable">
+				<div class="tiny super">start time</div>
+				<div class="start">9:00PM</div>
+				<div class="name">Gerome</div>
+				<div class="dest">Campus</div>
+				<div class="tiny superend">end time</div>
+				<div class="end">10:00PM</div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<span class="clickable">
+			<img alt="lock" id="lock" 
+				 src="_lock.png"/>
+		</span>
+	</footer>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+	<script type="text/javascript">
+		var untilTime = new Date();
+		untilTime.setHours(untilTime.getHours());
+		untilTime.setMinutes(untilTime.getMinutes()+45);
+		function writeTime() {
+			var currentTime = new Date();
+			var	hours = currentTime.getHours();
+			var	minutes = currentTime.getMinutes();
+			var seconds = currentTime.getSeconds();
+			var	time;
+			if (minutes < 10) {
+				minutes = "0" + minutes;
+			}
+			time = (hours % 12 ? hours % 12 : 12) + ":" + minutes + ":" + (seconds<10 ? "0"+seconds : seconds) + " ";
+			if (hours > 11) {
+				time += "PM";
+			} else {
+				time += "AM";
+			}
+			return time;
+		}
+		function writeTimeRemainingUntil(time) {
+			currentTime = new Date();
+			return (time.getHours() - currentTime.getHours())+':'+((time.getMinutes()-currentTime.getMinutes()+60)%60);
+		}
+	</script>		
+	<script>
+	var socket = io.connect();
+	
+	$(document).ready( function() {
+		// get the static participant info
+		$.getJSON('participant.json', function(data) {
+			$.each(data, function(key,val){
+			  $('#'+key).text(val);
+			  username=val;
+			});
+		});
+		//clock
+		setInterval( function () { 
+			$('#currenttime').html(writeTime());
+			$('#timefield2').html(writeTimeRemainingUntil(untilTime));
+			}, 100);
+	});
+	
+	
+	// the part where the window listens to the remote for navigation and click
+	socket.on('msg', function (data) {
+		var lastActive;
+		if (data=="UNLOCK") {
+			alert('unlock');
+	    }
+	    if (data=="UP") {
+	    	// decrement activeID to move the cursor up the clickable list
+			lastActive = $(".activ").index(".clickable");
+	    	if ( $(".clickable")[$(".activ").index(".clickable")-1] ) {
+	    		$($(".clickable")[lastActive]).removeClass("activ");
+	    		$($(".clickable")[lastActive-1]).addClass("activ");
+	    	}
+	    }
+	    if (data=="DOWN") {
+	    	// increment activeID to move the cursor down the clickable list
+			lastActive = $(".activ").index(".clickable");
+	    	if ( $(".clickable")[$(".activ").index(".clickable")+1] ) {
+	    		$($(".clickable")[lastActive]).removeClass("activ");
+	    		$($(".clickable")[lastActive+1]).addClass("activ");
+	    	}
+	    }
+	    if (data=="ENTER") {
+	    	// perform the action on the clickable selection
+			alert($(".activ"));
+	    } 	
+	    if (data=="RED") {
+		    alert('red pressed'); 
+	    }
+	});
+
+	</script>
+</html>
