@@ -10,7 +10,7 @@ function handler (req, res) {
   var jsonpatt = new RegExp ('json$');
   var imgpatt = new RegExp ('png$');
   var csspatt = new RegExp ('css$');
-  var windowpatt = new RegExp ('^.*window.*html$');
+  var windowpatt = new RegExp ('^.*.*html$');
 
   if (windowpatt.test(req.url)){
 	fs.readFile(__dirname + req.url, function (err, data) {

@@ -1,0 +1,121 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+	<head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+		<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+		<title>Great Circles Remote</title> 
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="viewport" content="width=640, user-scalable=no" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+		<style>
+			* {
+				-webkit-touch-callout: none;
+				-webkit-user-select: none; /* Disable selection/Copy of UIWebView */
+				-webkit-tap-highlight-color: rgba(0,0,0,0);
+	    	}
+
+			body{margin:0;width:640;height:960px;background:url('key-base.png') no-repeat;}
+			#remote{position:absolute; top:200px;left:240px;}
+			a,span{display:block;width:125px;height:125px;margin-bottom:10px;outline:0;}
+			
+			#enter{margin-top:50px;margin-left:20px;background:url('buttons-texture.png') -130px 0;}
+			#down{width:170px; background:url('buttons-texture.png') -260px 0;}
+			#up{width:170px; background:url('buttons-texture.png') -442px 0;}
+			
+			#remote a.down, #remote span.down{background-position-y:-125px;}
+		</style> 
+	</head> 
+
+	<body>
+	<div id="remote">
+
+
+		<span id="up" class="no-touch">
+		</span>
+		<a id="down">
+		</a>
+		<a id="enter">
+		</a>
+
+	</div>
+	</body>
+	<script src="/socket.io/socket.io.js"></script>
+	
+	<script>
+  	  var socket = io.connect();
+	
+	</script>
+	
+	<script>
+	/*
+	function stateChange(state)
+		{
+			switch(state)
+			{
+				case 1: 
+					$("#red").css("background-color", "red");
+					break;
+				case 2:
+					$("#red").css("background-color", "yellow");
+					break;
+				case 3:
+					$("#red").css("background-color", "green");
+					break;
+
+			}
+		}
+		
+		socket.on('msg', function (data) {
+			if (data=1 || data==2 || data=3) stateChange(data);	       
+	    });
+
+*/
+/*
+		$("a").click(function(){
+			$(this).effect("pulsate", { times:2 }, 100);
+		});
+*/
+
+	 	$("#red").click(function(){
+	 		socket.emit('remote', "UNLOCK");
+	 	});
+	 	$("#up").click(function(){
+	 		socket.emit('remote', "UP");
+	 	}
+	 	);
+	 	$("#enter").click(function(){
+		 	socket.emit('remote', "ENTER");
+	 	}
+	 	);
+	 	$("#down").click(function(){
+		 	socket.emit('remote', "DOWN");
+
+	 	}
+		);
+		
+		var updateLayout = function() {
+		  if (window.innerWidth != currentWidth) {
+		    currentWidth = window.innerWidth;
+		    var orient = (currentWidth == 320) ? "profile" : "landscape";
+		    document.body.setAttribute("orient", orient);
+		    window.scrollTo(0, 1);
+		  }
+		};
+		
+		if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i))) {
+		    $("#remote a, #remote span").bind('touchstart', function(){
+		        $(this).addClass("down");
+		    });
+		    
+		    $("#remote a, #remote span").bind('touchend', function(){
+		        $(this).removeClass("down");
+        	});
+        }
+		
+		iPhone.DomLoad(updateLayout);
+		setInterval(updateLayout, 500);
+
+		</script>  
+</html> 
