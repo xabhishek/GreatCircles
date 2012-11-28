@@ -1,0 +1,122 @@
+<!DOCTYPE html> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+	<head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+		<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+		<title>Great Circles Remote</title> 
+		<meta name="apple-touch-fullscreen" content="yes" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+		<style>
+			* {
+				-webkit-touch-callout: none;
+	    	}
+	    	input{display:block;font-size:20px;margin:20px;}
+			body{width:300px;height:400px;background-color:black;}
+			a,span{display:block;cursor:pointer;margin:40px auto;width}
+			#remote{width:100px; height:320px;margin:40px auto;background-color: #444; border:4px solid silver; border-radius:25px;padding:20px;}
+			#red{width:30px;height:30px;background-color:red;}
+  
+			#down{width: 0; height: 0; border-left: 30px solid transparent; border-right: 30px solid transparent; border-top: 30px solid #00bfff;}
+			#enter{width:60px;height:40px;background-color:#83a0aa;}
+			#up{width: 0; height: 0; border-left: 30px solid transparent; border-right: 30px solid transparent; border-bottom: 30px solid #00bfff;}
+			
+			input[type="button"]{background: #ccc;}
+		</style> 
+	</head> 
+
+	<body>
+		<input class="name" placeholder="Name">
+		<input class="lockstate" placeholder="Lock State">
+		
+		<input type="button" id="changeVal" value="Change Values">
+		
+		<input class="trial" placeholder="Trial">
+		<input class="event" placeholder="Event">
+		<input class="action" placeholder="Action">
+		
+		<input type="button" id="loadPage" value="Load Page">
+		
+		
+	</body>
+	<script src="/socket.io/socket.io.js"></script>
+	
+	<script>
+  	  var socket = io.connect();
+	
+	</script>
+	
+	<script>
+	/*
+	function stateChange(state)
+		{
+			switch(state)
+			{
+				case 1: 
+					$("#red").css("background-color", "red");
+					break;
+				case 2:
+					$("#red").css("background-color", "yellow");
+					break;
+				case 3:
+					$("#red").css("background-color", "green");
+					break;
+
+			}
+		}
+		
+		socket.on('msg', function (data) {
+			if (data=1 || data==2 || data=3) stateChange(data);	       
+	    });
+
+*/
+
+	 	$("#loadPage").click(function(){
+	 		var url="/window";
+	 		if ($("input.trial").val()){url=url+"-trial"+$("input.trial").val()};
+	 		if ($("input.event").val()){url=url+"-e"+$("input.event").val()};
+	 		if ($("input.action").val()){url=url+"-a"+$("input.action").val()};
+	 		url=url+".html";
+	 		
+	 		socket.emit('remote', {msg: "debug", URL: url});
+	 		
+	 		setInterval( function () { 
+		 		$("#changeVal").click();
+			}, 500);
+					
+
+	 	});
+	 	
+	 	$("#changeVal").click(function(){
+			if($("input.lockstate").val())
+			{
+				var lockState=$("input.lockstate").val();
+				socket.emit('remote', {msg: "debuglock", lock: lockState});
+			}
+	 		
+	 		if($("input.name").val())
+			{
+				var name=$("input.name").val();	 		
+				socket.emit('remote', {msg: "debugname", name: name});
+			}
+					
+
+	 	});
+
+		
+		var updateLayout = function() {
+		  if (window.innerWidth != currentWidth) {
+		    currentWidth = window.innerWidth;
+		    var orient = (currentWidth == 320) ? "profile" : "landscape";
+		    document.body.setAttribute("orient", orient);
+		    window.scrollTo(0, 1);
+		  }
+		};
+		
+		iPhone.DomLoad(updateLayout);
+		setInterval(updateLayout, 500);
+
+		</script>  
+</html> 
