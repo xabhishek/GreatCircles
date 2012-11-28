@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head> 
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+		<title>Great Circles Remote</title> 
+		<meta name="apple-touch-fullscreen" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="viewport" content="width=640, user-scalable=no">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+		<style>
+			* {
+				-webkit-touch-callout: none;
+				-webkit-user-select: none; /* Disable selection/Copy of UIWebView */
+				-webkit-tap-highlight-color: rgba(0,0,0,0);
+	    	}
+
+			body{margin:0;width:640;height:960px;background:url('key-base.png') no-repeat;}
+			#base{position:absolute; top:0; z-index:300;width:640px; height:960px;background:url('key-light.png') no-repeat;}
+			#remote{position:absolute; z-index:300; top:400px;left:270px;}
+			#remote a, #remote span{display:block;width:90px;height:90px;margin-bottom:10px;outline:0;}
+			#car{position:absolute;top:100px;left:360px;z-index:100;width:120px;height:150px;}
+			#key{position:absolute;top:100px;left:170px;z-index:100;width:120px;height:150px;}
+			.green{background-color:rgba(0,255,137,0.72);}
+			.white{background-color:rgba(255,255,255,0.72);}
+			.red{background-color:rgba(255,0,0,0.72);}
+			#remote #o1{margin-left:15px;background:url('buttons-texture2.png') 0 0;}
+			#remote #o3{margin-left:15px;background:url('buttons-texture2.png') -90px 0;}
+			#remote #o2{width:120px; background:url('buttons-texture2.png') -180px 0;}
+			#remote #o4{width:120px; background:url('buttons-texture2.png') -310px 0;}
+			
+			#timer{position:absolute; top:300px;left:250px;font-family:'Radioland'; color:#0096ff;text-shadow:0px 1px 5px rgba(0,0,0,1);font-size:60px;}
+			#remote a.down, #remote span.down{background-position-y:-90px;}
+		</style> 
+	</head> 
+
+	<body>
+	<div id="car">
+	</div>
+	<div id="key">
+	</div>
+	
+	<div id="timer">
+	<span id="hour">2</span>:<span id="minutes">20</span>
+	</div>
+	<div id="base">
+	
+	<div id="remote">
+
+		<a id="o1">
+		</a>
+
+		<a id="o2">
+		</a>
+		<a id="o3">
+		</a>
+		<span id="o4">
+		</span>
+
+
+	</div>
+	</div>
+	
+	<script src="/socket.io/socket.io.js"></script>
+	
+	<script>
+  	  var socket = io.connect();
+	
+	</script>
+	
+	<script>
+	/*
+	function stateChange(state)
+		{
+			switch(state)
+			{
+				case 1: 
+					$("#red").css("background-color", "red");
+					break;
+				case 2:
+					$("#red").css("background-color", "yellow");
+					break;
+				case 3:
+					$("#red").css("background-color", "green");
+					break;
+
+			}
+		}
+		
+		socket.on('msg', function (data) {
+			if (data=1 || data==2 || data=3) stateChange(data);	       
+	    });
+
+*/
+/*
+		$("a").click(function(){
+			$(this).effect("pulsate", { times:2 }, 100);
+		});
+*/
+
+	socket.on('msg', function (data) {
+
+	    //Debug controllers
+	    if (data.car=="green") {
+	    	$("#car").removeClass();
+		    $("#car").addClass("green");
+	    }else if (data.car=="white") {
+	    	$("#car").removeClass();
+		    $("#car").addClass("white");
+	    }else if (data.car=="red") {
+	    	$("#car").removeClass();
+		    $("#car").addClass("red");
+	    }
+
+	    if (data.key=="green") {
+	    	$("#key").removeClass();
+		    $("#key").addClass("green");
+	    }else if (data.key=="white") {
+	    	$("#key").removeClass();
+		    $("#key").addClass("white");
+	    }else if (data.car=="red") {
+	    	$("#key").removeClass();
+		    $("#key").addClass("red");
+	    }
+	    
+	    $("#hour").text(data.h);
+	    $("#minutes").text(data.m);
+
+
+	});
+
+	 	$("#o1").click(function(){
+	 		socket.emit('remote', "UNLOCK");
+	 	});
+	 	$("#o2").click(function(){
+	 		socket.emit('remote', "UP");
+	 	}
+	 	);
+	 	$("#o3").click(function(){
+		 	socket.emit('remote', "ENTER");
+	 	}
+	 	);
+	 	$("#o4").click(function(){
+		 	socket.emit('remote', "DOWN");
+
+	 	}
+		);
+		
+		var updateLayout = function() {
+		  if (window.innerWidth != currentWidth) {
+		    currentWidth = window.innerWidth;
+		    var orient = (currentWidth == 320) ? "profile" : "landscape";
+		    document.body.setAttribute("orient", orient);
+		    window.scrollTo(0, 1);
+		  }
+		};
+		
+		if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i)) || (navigator.userAgent.match(/iPad/i))) {
+		    $("#remote a, #remote span").bind('touchstart', function(){
+		        $(this).addClass("down");
+		    });
+		    
+		    $("#remote a, #remote span").bind('touchend', function(){
+		        $(this).removeClass("down");
+        	});
+        }
+		
+		iPhone.DomLoad(updateLayout);
+		setInterval(updateLayout, 500);
+
+		</script>  
+ 
+</body></html>
