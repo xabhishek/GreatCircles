@@ -11,3 +11,27 @@ window-trial9-a1-e1.html is the page for trial 9 after action1 clicked and then 
 
 
 ~ADP
+
+
+DEBUG controller
+
+Open localhost/window.html
+(replace localhost with ip-address or machine-name on iPhone)
+
+Paste debug logic from end of script in window-trial6.html into files which require it.
+
+Current state:
+	    if (data.msg=="debug") {
+		    window.location=data.URL;
+	    }
+
+	    if (data.msg=="debugname"){
+	    	$("span#name").text(data.name);
+		    
+	    }
+	    if (data.msg=="debuglock"){
+			if(data.lock==0) $("footer img").attr("src", "_unlock.png");
+			if(data.lock==1) $("footer img").attr("src", "_lock.png");
+						    
+	    }
+
