@@ -1,0 +1,13 @@
+This directory contains the necessary files for the html/js prototype for GT CS6750 HCI Final Project (P4) User Testing.
+
+The naming convention for the .html files is:
+
+window-[trial(number)[-(click event)],...].html
+
+Where:...
+
+window-.html is the prototype/template
+window-trial9-a1-e1.html is the page for trial 9 after action1 clicked and then event1 clicked.
+
+
+~ADP
