@@ -156,3 +156,17 @@ div#calendar {
 	color: #030303;
 	background-color:#F4F444;
 }
+
+
+
+
+.calItemactiv #event1, #event2, #event3, #event4 {
+	position:relative; 
+	height:100px; 
+	width:260px;
+	margin:3px;
+	padding:3px;
+	color: #030303;
+	background-color:#F4F444;
+}
+
