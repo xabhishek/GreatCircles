@@ -74,7 +74,7 @@
 	</script>		
 	<script>
 	var socket = io.connect();
-	
+	socket.emit('remote', {key: keylight, car: carlight, h: hours, m: minutes});
 	$(document).ready( function() {
 		// get the static participant info
 		$.getJSON('participant.json', function(data) {

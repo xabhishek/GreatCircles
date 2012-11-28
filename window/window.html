@@ -80,6 +80,8 @@
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
 	var socket = io.connect();
+		socket.emit('remote', {key: keylight, car: carlight, h: hours, m: minutes});
+
 	var jqXHR, tmp, username;
 	
 	//clock
