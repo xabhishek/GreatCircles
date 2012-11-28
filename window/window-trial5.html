@@ -34,7 +34,7 @@
 	<footer>
 		<span class="clickable">
 			<img alt="lock" id="lock" 
-				 src="_lock.png"/>
+				 src="_unlock.png"/>
 		</span>
 	</footer>
 
@@ -110,7 +110,8 @@
 	    }
 	    if (data=="ENTER") {
 	    	// perform the action on the clickable selection
-			( $(".activ").text()==$("#action4").text() ) ? alert('correct!') : alert('try again');
+			$(".activ").effect("pulsate",{times:3},1000).removeClass("activ");
+			$("#action1").addClass('activ');
 	    } 	
 	    if (data=="RED") {
 		    alert('red pressed'); 

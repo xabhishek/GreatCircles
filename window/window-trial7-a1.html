@@ -17,16 +17,16 @@
 	<section id="messages">
 		<span id="greeting">Hello, </span><span id="name">Keenan!</span>
 		<hr><h1 style="position:relative; left:-10px;">Status</h1>
-		<span id="othertext1">Car is free until</span><span id="timefield1">4:00PM</span><br>	
-		<span id="othertext2">Reserve car for </span><span id="timefield2"></span>
+		<span id="othertext1">Car is free until </span><span id="timefield1">4:00PM</span><br>	
 	</section>
 	<section id="menu">
 		<div id="actions">
 		  	<div id="action1" class="clickable activ">+ 0:15</div>
 		  	<div id="action2" class="">time:</div>
-		  	<div id="action3" class="clickable">- 0:15</div>		  	
+		  	<div id="action3" class="clickable">- 0:15</div>	
+		  	<br><br>	  	
 		  	<div id="action4" class="clickable" onclick="window.location.href='window-trial7-a1-a4.html'">drive now</div>
-		  	<div id="action5" class="clickable" onclick="">back</div>
+		  	<div id="action5" class="clickable" onclick="window.location.href='window-trial7.html'">back</div>
 
 		</div>
 	</section>
@@ -98,8 +98,8 @@
 		$('#action3').on("click", function() {
 			addedMinutes-=15;
 			if (addedMinutes < 0) {
-				addedHours-=1;
-				addedMinutes+=60;
+				addedHours=0;
+				addedMinutes=0;
 			} 
 			addedMinutes = addedMinutes%60;
 			$('#action2').text('time: '+addedHours+':'+ ((addedMinutes<10) ? '0'+addedMinutes : addedMinutes) );

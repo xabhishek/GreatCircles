@@ -16,14 +16,15 @@
 	<div class="tiny">system for community car ownership</div>
 	<section id="messages">
 		<span id="greeting">Hello, </span><span id="name">Keenan!</span>
-		<hr><h1 style="position:relative; left:-10px;">Confirm...</h1>
-		<span id="othertext1">Join Frank's trip to Moe's?</span><span id="timefield1">4:00-5:00PM</span><br>	
-		<span id="othertext2"></span><span id="timefield2"></span>
+		<hr><h1 style="position:relative; left:-10px;">Status</h1>
+		<span id="othertext1">Car is free until</span><span id="timefield1">4:00PM</span><br>	
+		<span id="othertext2"></span><span id=""></span>
 	</section>
 	<section id="menu">
 		<div id="actions">
-		  	<div id="action1" class="clickable activ" onclick="window.location.href='window-trial6-e1-a1.html'">Join</div>
-		  	<div id="action2" class="clickable" onclick="window.location.href='window-trial6-e1-a2.html'">Back</div>
+		  	<div id="action1" class="clickable activ" onclick="">end trip</div>
+		  	<div id="action2" class="clickable" onclick="">drive now</div>
+		  	<div id="action3" class="clickable" onclick="">usage summary</div>
 		</div>
 	</section>
 	<section id="menu">
@@ -32,15 +33,15 @@
 				<div class="tiny super">start time</div>
 				<div class="start">4:00PM</div>
 				<div class="name">Frank</div>
-				<div class="dest">Moe's - Tech Square</div>
+				<div class="dest">Moe's</div>
 				<div class="tiny superend">end time</div>
 				<div class="end">5:00PM</div>
 			</div>
-			<div id="event2" class="calItem clickable">
+			<div id="event2" class="calItem clickable" onclick="">
 				<div class="tiny super">start time</div>
 				<div class="start">6:00PM</div>
-				<div class="name">Sally</div>
-				<div class="dest">campus - meeting</div>
+				<div class="name">Sally and <span id="alsoname">Keenan</span></div>
+				<div class="dest">Campus</div>
 				<div class="tiny superend">end time</div>
 				<div class="end">8:00PM</div>
 			</div>
@@ -48,7 +49,7 @@
 				<div class="tiny super">start time</div>
 				<div class="start">9:00PM</div>
 				<div class="name">Gerome</div>
-				<div class="dest">campus</div>
+				<div class="dest">Campus</div>
 				<div class="tiny superend">end time</div>
 				<div class="end">10:00PM</div>
 			</div>
@@ -57,7 +58,7 @@
 	<footer>
 		<span class="clickable">
 			<img alt="lock" id="lock" 
-				 src="_lock.png"/>
+				 src="_unlock.png"/>
 		</span>
 	</footer>
 
@@ -98,6 +99,7 @@
 		$.getJSON('participant.json', function(data) {
 			$.each(data, function(key,val){
 			  $('#'+key).text(val);
+			  $('#'+alsoname).text(val);
 			  username=val;
 			});
 		});
@@ -106,6 +108,8 @@
 			$('#currenttime').html(writeTime());
 			$('#timefield2').html(writeTimeRemainingUntil(untilTime));
 			}, 100);
+			
+		$('#event2').effect("pulsate", {times:4},1000);
 	});
 	
 	
