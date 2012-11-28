@@ -87,6 +87,21 @@
 	    if (data=="RED") {
 		    alert('red pressed'); 
 	    }
+	    	    //Debug controllers
+	    if (data.msg=="debug") {
+		    window.location=data.URL;
+	    }
+
+	    if (data.msg=="debugname"){
+	    	$("span#name").text(data.name);
+		    
+	    }
+	    if (data.msg=="debuglock"){
+			if(data.lock==0) $("footer img").attr("src", "_unlock.png");
+			if(data.lock==1) $("footer img").attr("src", "_lock.png");
+						    
+	    }
+
 	});
 
 	</script>
