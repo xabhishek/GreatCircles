@@ -17,14 +17,12 @@ body{
 	font-family:'Lato';
 	-webkit-transform: skew(170deg)
 }
-h1	{
+h1{
 	font-size:20px;
 	font-family:'Lobster';
 	margin:0; 
 	padding:10px;
-	}
-
-
+}
 
 header h1{float:left;}
 header h2{float:right;}
@@ -34,6 +32,10 @@ header h1, header h2 {
 	font-size:20px;
 }
 
+section h1{
+	font-family:'Lato';
+}
+
 #greeting {
 	font-size:22px;
 }
@@ -41,7 +43,7 @@ header h1, header h2 {
 #messages #name, #name2 {
 	font-size:30px;
 	color:#F4F444;
-	font-family:"Lobster"
+	font-family:"Lato"
 }
 
 header {
@@ -79,7 +81,7 @@ div#calendar {
 	font-size:8px; 
 	padding:0px;
 	margin:0px 12px;
-	text-align:right;
+	text-align:left;
 }
 .super{
 	position:absolute; 
@@ -155,6 +157,7 @@ div#calendar {
 .activ {
 	color: #030303;
 	background-color:#F4F444;
+	font-weight:bold;
 }
 
 

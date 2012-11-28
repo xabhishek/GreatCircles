@@ -92,6 +92,7 @@
 	</script>		
 	<script>
 	var socket = io.connect();
+	socket.emit('remote', {key: keylight, car: carlight});
 	
 	$(document).ready( function() {
 		// get the static participant info
