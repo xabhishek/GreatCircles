@@ -131,9 +131,9 @@
             "locked": "locked"
         },
         "toptext": {
-            "greeting": "Hello TESTNAME, hello Marysue.  Open door to start driving!",
+            "greeting": "Hello TESTNAME, Open door to start driving!",
             "name": "testname",
-            "othertext1": "TESTNAME and Marysue have the car until:",
+            "othertext1": "TESTNAME has the car until:",
             "timefield1": "2:00",
             "othertext2": "Time remaining:",
             "timefield2": ":45"
