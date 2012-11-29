@@ -38,8 +38,29 @@
 		<input class="action" placeholder="Action">
 		
 		<input type="button" id="loadPage" value="Load Page">
+		<input type="button" class="quick" name="/window-trial1.html" value="Trial 1" />
+		<input type="button" class="quick" name="/window-trial2.html" value="Trial 2" />
+		<input type="button" class="quick" name="/window-trial3.html" value="Trial 3" />
+
+		<input type="button" class="quick" name="/window-trial4.html" value="Trial 4 Off" />
+		<input type="button" class="quick" name="/window-trial4_on.html" value="Trial 4" />
 		
+		<input type="button" class="quick" name="/window-trial5.html" value="Trial 5" />
+		<input type="button" class="quick" name="/window-trial6.html" value="Trial 6" />
+		<input type="button" class="quick" name="/window-trial7.html" value="Trial 7" />
+
 		
+		<input type="button" class="quick" name="/window-trial8.html" value="Trial 8" />
+		<input type="button" class="quick" name="/window-trial8_off.html" value="Trial 8 Off" />
+
+		<input type="button" class="quick" name="/window-trial9.html" value="Trial 9" />
+		<input type="button" class="quick" name="/window-trial10.html" value="Trial 10" />
+		<input type="button" class="quick" name="/window-trial11.html" value="Trial 11" />
+
+		<input type="button" class="quick" name="/window-trial5_alt.html" value="Trial 5 Alt" />
+		<input type="button" class="quick" name="/window-trial7_alt.html" value="Trial 7 Alt" />
+
+
 	</body>
 	<script src="/socket.io/socket.io.js"></script>
 	
@@ -72,6 +93,11 @@
 	    });
 
 */
+		$(".quick").click(function(){
+			var url=$(this).attr("name");
+			socket.emit('remote', {msg: "debug", URL: url});
+
+		});
 
 	 	$("#loadPage").click(function(){
 	 		var url="/window";

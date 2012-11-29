@@ -24,6 +24,7 @@
 			.green{background-color:rgba(0,255,137,0.72);}
 			.white{background-color:rgba(255,255,255,0.72);}
 			.red{background-color:rgba(255,0,0,0.72);}
+			.black{background-color:rgba(0,0,0,0.72);}
 			#remote #enter{margin-top:50px;margin-left:20px;background:url('buttons-texture.png') -130px 0;}
 			#remote #down{width:170px; background:url('buttons-texture.png') -260px 0;}
 			#remote #up{width:170px; background:url('buttons-texture.png') -442px 0;}
@@ -47,9 +48,9 @@
 	<div id="remote">
 
 
-		<span id="up" class="no-touch">
+		<span id="up">
 		</span>
-		<a id="down" class="">
+		<a id="down">
 		</a>
 		<a id="enter">
 		</a>
@@ -106,7 +107,12 @@
 	    }else if (data.car=="red") {
 	    	$("#car").removeClass();
 		    $("#car").addClass("red");
+	    }else if (data.car=="black") {
+	    	$("#car").removeClass();
+	    	$("#car").addClass("black");
+
 	    }
+
 
 	    if (data.key=="green") {
 	    	$("#key").removeClass();
@@ -114,9 +120,12 @@
 	    }else if (data.key=="white") {
 	    	$("#key").removeClass();
 		    $("#key").addClass("white");
-	    }else if (data.car=="red") {
+	    }else if (data.key=="red") {
 	    	$("#key").removeClass();
 		    $("#key").addClass("red");
+	    }else if (data.key=="black") {
+	    	$("#key").removeClass();
+	    	$("#key").addClass("black");
 	    }
 	    
 	    $("#hour").text(data.h);

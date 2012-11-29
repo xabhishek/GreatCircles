@@ -20,7 +20,7 @@
 		<span id="greeting">Hello, </span><span id="name2">MarySue!</span>
 		<hr><h1 style="position:relative; left:-10px;">Status</h1>
 		<span id="othertext1"><span id="alsoname">Keenan!</span> has the car until: </span><span id="timefield1">2:00PM</span><br>	
-		<span id="othertext2">Time remaining: </span><span id="">0:45</span>
+		<span id="othertext2">Time remaining: </span><span>2:00</span>
 	</section>
 	<section id="menu">
 		<div id="actions">
@@ -143,10 +143,10 @@
 	    }
 	    if (data=="ENTER") {
 	    	// perform the action on the clickable selection
-			alert($(".activ"));
+			$(".activ").click();
 	    } 	
 	    if (data=="RED") {
-		    alert('red pressed'); 
+			$(".activ").click();
 	    }
 	    	    //Debug controllers
 	    if (data.msg=="debug") {

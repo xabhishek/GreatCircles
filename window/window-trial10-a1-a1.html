@@ -104,8 +104,8 @@
 		// get the static participant info
 		$.getJSON('participant.json', function(data) {
 			$.each(data, function(key,val){
-			  $('#'+key).text(val);
-			  $('#'+alsoname).text(val);
+			  $('#name').text(val);
+			  $('#alsoname').text(val);
 			  username=val;
 			});
 		});

@@ -23,8 +23,7 @@
 	</section>
 	<section id="menu">
 		<div id="actions">
-		  	<div id="action1" class="clickable activ" onclick="">end trip</div>
-		  	<div id="action2" class="clickable" onclick="">drive now</div>
+		  	<div id="action2" class="clickable activ" onclick="">drive now</div>
 		  	<div id="action3" class="clickable" onclick="">usage summary</div>
 		</div>
 	</section>
@@ -68,8 +67,8 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 	<script type="text/javascript">
 		var keylight= "white"
-		var carlight= "green"
-		var hours= 3
+		var carlight= "white"
+		var hours= 4
 		var minutes = "00"
 		var untilTime = new Date();
 		untilTime.setHours(untilTime.getHours());
@@ -140,10 +139,10 @@
 	    }
 	    if (data=="ENTER") {
 	    	// perform the action on the clickable selection
-			alert($(".activ"));
+			$(".activ").click();
 	    } 	
 	    if (data=="RED") {
-		    alert('red pressed'); 
+			$(".activ").click();
 	    }
 	    	    //Debug controllers
 	    if (data.msg=="debug") {

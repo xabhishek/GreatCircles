@@ -19,12 +19,12 @@
 		<span id="greeting">Hello, </span><span id="name">Keenan!</span>
 		<span id="greeting">Hello, </span><span id="name2">MarySue!</span>
 		<hr><h1 style="position:relative; left:-10px;">Status</h1>
-		<span id="othertext1">Add or Remove Members from this trip:</span><span id="timefield1">2:00PM</span><br>	
+		<span id="othertext1">Add or Remove Members from this trip:</span><br>	
 	</section>
 	<section id="menu">
 		<div id="actions">
 		  	<div id="action1" class="clickable activ" onclick="">add MarySue</div>
-		  	<div id="action2" class="clickable" onclick="window.location.href='window-trial12-a2-a2.html'">remove <span id="name">Keenan!</span></div>
+		  	<div id="action2" class="clickable" onclick="window.location.href='window-trial12-a2-a2.html'">remove <span id="alsoname">Keenan!</span></div>
 		  	<div id="action3" class="clickable" onclick="">Add someone else</div>
 		</div>
 	</section>
@@ -69,8 +69,8 @@
 	<script type="text/javascript">
 		var keylight= "white"
 		var carlight= "green"
-		var hours= 0
-		var minutes = "45"
+		var hours= 2
+		var minutes = "00"
 		var untilTime = new Date();
 		untilTime.setHours(untilTime.getHours());
 		untilTime.setMinutes(untilTime.getMinutes()+45);
@@ -105,6 +105,7 @@
 		$.getJSON('participant.json', function(data) {
 			$.each(data, function(key,val){
 			  $('#'+key).text(val);
+			  $('#alsoname').text(val);
 			  username=val;
 			});
 		});
@@ -140,10 +141,10 @@
 	    }
 	    if (data=="ENTER") {
 	    	// perform the action on the clickable selection
-			alert($(".activ"));
+			  $('.activ').click();
 	    } 	
 	    if (data=="RED") {
-		    alert('red pressed'); 
+			  $('.activ').click();
 	    }
 	    	    //Debug controllers
 	    if (data.msg=="debug") {

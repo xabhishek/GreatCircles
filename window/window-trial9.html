@@ -18,7 +18,7 @@
 	<section id="messages">
 		<span id="greeting">Hello, </span><span id="name">Keenan!</span>
 		<hr><h1 style="position:relative; left:-10px;">Status</h1>
-		<span id="othertext1">Trip in progress </span><span id="timefield1">4:00PM</span><br>	
+		<span id="othertext1">Trip in progress </span><br>	
 		<span id="othertext2">You have the car until </span><span id="">2:00PM</span>
 	</section>
 	<section id="menu">
@@ -69,7 +69,7 @@
 	<script type="text/javascript">
 		var keylight= "white"
 		var carlight= "green"
-		var hours= 3
+		var hours= 2
 		var minutes = "00"
 		var untilTime = new Date();
 		untilTime.setHours(untilTime.getHours());
@@ -139,11 +139,9 @@
 	    	}
 	    }
 	    if (data=="ENTER") {
-	    	// perform the action on the clickable selection
-			alert($(".activ"));
+	    	$(".activ").click();// perform the action on the clickable selection
 	    } 	
 	    if (data=="RED") {
-		    alert('red pressed'); 
 	    }
 	    	    //Debug controllers
 	    if (data.msg=="debug") {

@@ -40,7 +40,7 @@
 	<script type="text/javascript">		
 		var keylight= "white"
 		var carlight= "green"
-		var hours= 3
+		var hours= 2
 		var minutes = "00"
 		
 		var untilTime = new Date();
@@ -112,10 +112,10 @@
 	    }
 	    if (data=="ENTER") {
 	    	// perform the action on the clickable selection
-			alert($(".activ"));
+			$(".activ").click();
 	    } 	
 	    if (data=="RED") {
-		    alert('red pressed'); 
+		    $(".activ").click(); 
 	    }
 	    	    //Debug controllers
 	    if (data.msg=="debug") {

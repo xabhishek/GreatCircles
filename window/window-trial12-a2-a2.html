@@ -20,7 +20,7 @@
 		<span id="greeting">Hello, </span><span id="name2">MarySue!</span>
 		<hr><h1 style="position:relative; left:-10px;">Status</h1>
 		<span id="othertext1"><span>MarySue</span></span> has the car until: </span><span id="timefield1">2:00PM</span><br>	
-		<span id="othertext1">Time remaining: </span><span id="timefield1">0:45PM</span><br>	
+		<span id="othertext1">Time remaining: </span><span>2:00</span><br>	
 	</section>
 	<section id="menu">
 		<div id="actions">
@@ -61,7 +61,7 @@
 	<footer>
 		<span class="clickable">
 			<img alt="lock" id="lock" 
-				 src="_lock.png"/>
+				 src="_unlock.png"/>
 		</span>
 	</footer>
 
@@ -70,9 +70,9 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 	<script type="text/javascript">
 		var keylight= "white"
-		var carlight= "green"
-		var hours= 0
-		var minutes = "45"
+		var carlight= "white"
+		var hours= 2
+		var minutes = "00"
 		var untilTime = new Date();
 		untilTime.setHours(untilTime.getHours());
 		untilTime.setMinutes(untilTime.getMinutes()+45);

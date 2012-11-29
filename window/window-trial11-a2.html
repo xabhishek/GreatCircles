@@ -16,10 +16,10 @@
 	<hr style="margin:0px; padding: 0px; background-color:#F4F444"> 
 	<div class="tiny">system for community car ownership</div>
 	<section id="messages">
-		<span id="greeting">Hello, </span><span id="name">Keenan!</span>
-		<span id="greeting">Hello, </span><span id="name2">MarySue!</span>
+		<span id="greeting">Hello, </span><span id="name">Keenan!</span><br>
+		<span id="greeting">Hello, </span><span id="name2">Mary Sue!</span>
 		<hr><h1 style="position:relative; left:-10px;">Status</h1>
-		<span id="othertext1">Add or Remove Members from this trip:</span><span id="timefield1">2:00PM</span><br>	
+		<span id="othertext1">Add or Remove Members from this trip:</span><br>	
 	</section>
 	<section id="menu">
 		<div id="actions">
@@ -57,9 +57,9 @@
 		</div>
 	</section>
 	<footer>
-		<span class="clickable">
+		<span >
 			<img alt="lock" id="lock" 
-				 src="_lock.png"/>
+				 src="_unlock.png"/>
 		</span>
 	</footer>
 
@@ -69,7 +69,7 @@
 	<script type="text/javascript">
 		var keylight= "white"
 		var carlight= "green"
-		var hours= 4
+		var hours= 2
 		var minutes = "00"
 		var untilTime = new Date();
 		untilTime.setHours(untilTime.getHours());
@@ -140,10 +140,10 @@
 	    }
 	    if (data=="ENTER") {
 	    	// perform the action on the clickable selection
-			alert($(".activ"));
+			$(".activ").click();
 	    } 	
 	    if (data=="RED") {
-		    alert('red pressed'); 
+			$(".activ").click();
 	    }
 	    	    //Debug controllers
 	    if (data.msg=="debug") {
