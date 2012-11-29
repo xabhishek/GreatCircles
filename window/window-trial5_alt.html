@@ -5,60 +5,72 @@
 		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 		<link href="stylesheet2.css" rel="stylesheet" type="text/css"/>
+		<style>
+			#remote{position:relative; top:-5px; z-index:300;}
+			#remote a, #remote span{display:block;width:90px;height:90px;margin-bottom:10px;outline:0;}
+			#remote #o1{margin-left:15px;background:url('buttons-texture2.png') 0 0;}
+			#remote #o3{margin-left:15px;background:url('buttons-texture2.png') -90px 0;}
+			#remote #o2{width:120px; background:url('buttons-texture2.png') -180px 0;}
+			#remote #o4{width:120px; background:url('buttons-texture2.png') -310px 0;}
+			#remote a.down, #remote span.down{background-position-y:-90px;}
+		</style>
 	</head>
 	
 	<body>
 	<header>
 		<h1 id="logo">Great Circles</h1>
-				<h2>12:00PM</h1>
-		<!-- <h2 id="currenttime"></h2> !-->
+		<h2> 12:00PM </h2>
+		<!-- <h2 id="currenttime"></h2>!-->
 	</header>
 	<hr style="margin:0px; padding: 0px; background-color:#F4F444"> 
 	<div class="tiny">system for community car ownership</div>
 	<section id="messages">
 		<span id="greeting">Hello, </span><span id="name">Keenan!</span>
 		<hr><h1 style="position:relative; left:-10px;">Status</h1>
-		<span id="othertext1">Join Sally's trip to Publix?</span><span>6:00PM - 7:00PM</span><br>	
-		<span id="othertext2"></span><span ></span>
+		<span id="othertext1">You have the car until </span><span id="timefield1">2:58PM</span><br>	
+		<span id="othertext2">Remaining time: </span><span id="timefield2">2:58</span>
 	</section>
 	<section id="menu">
 		<div id="actions">
-		  	<div id="action1" class="clickable activ" onclick="">Join</div>
-		  	<div id="action2" class="clickable" onclick="">Back</div>
+		
+		
+		
+
+		
+			<div id="action1" class="clickable" onclick="" style="font-size:28px; color:#002200; background-color:#FAFA97; position:relative">thing 1
+		<div id="remote" style="position:relative; top: 10px; left:65px">
+		<a id="o1">
+		</a>
+		</div>
+		</div>
+
+		<div id="action2" class="clickable" onclick="" style="font-size:28px; color:#002200; background-color:#FAFA97; position:relative">thing 2
+		<div id="remote" style="position:relative; top: 10px; left:65px">
+		<a id="o2">
+		</a>
+		</div>
+		</div>
+		
+		<div id="action3" class="clickable" onclick="" style="font-size:28px; color:#002200; background-color:#FAFA97; position:relative">thing 3
+		<div id="remote" style="position:relative; top: 10px; left:65px">
+		<a id="o3">
+		</a>
+		</div>
+		</div>
+		
+		<div id="action4" class="clickable" onclick="" style="font-size:28px; color:#002200; background-color:#FAFA97; position:relative">PICK ME
+		<div id="remote" style="position:relative; top: 10px; left:65px">
+		<a id="o4">
+		</a>
+		  	</div>
 		</div>
 	</section>
 	<section id="menu">
-<!--		<div id="calendar"><h1 style="position:relative; left:-10px;">Upcoming Trips</h1>
-			<div id="event1" class="calItem clickable">
-				<div class="tiny super">start time</div>
-				<div class="start">3:45PM</div>
-				<div class="name">Derek</div>
-				<div class="dest">Kinko's</div>
-				<div class="tiny superend">end time</div>
-				<div class="end">4:45PM</div>
-			</div>
-			<div id="event2" class="calItem clickable">
-				<div class="tiny super">start time</div>
-				<div class="start">5:00PM</div>
-				<div class="name">Nancy</div>
-				<div class="dest">Publix</div>
-				<div class="tiny superend">end time</div>
-				<div class="end">5:45PM</div>
-			</div>
-			<div id="event3" class="calItem clickable">
-				<div class="tiny super">start time</div>
-				<div class="start">9:00PM</div>
-				<div class="name">Andre</div>
-				<div class="dest">Publix</div>
-				<div class="tiny superend">end time</div>
-				<div class="end">9:45PM</div>
-			</div>
-		</div>
 	</section>
--->	<footer>
+	<footer>
 		<span class="clickable">
 			<img alt="lock" id="lock" 
-				 src="_lock.png"/>
+				 src="_unlock.png"/>
 		</span>
 	</footer>
 
@@ -66,6 +78,11 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 	<script type="text/javascript">
+	var keylight= "white"
+		var carlight= "green"
+		var hours= 2
+		var minutes = "55"
+	
 		var untilTime = new Date();
 		untilTime.setHours(untilTime.getHours());
 		untilTime.setMinutes(untilTime.getMinutes()+45);
@@ -94,7 +111,6 @@
 	<script>
 	var socket = io.connect();
 	socket.emit('remote', {key: keylight, car: carlight, h: hours, m: minutes});
-
 	$(document).ready( function() {
 		// get the static participant info
 		$.getJSON('participant.json', function(data) {
@@ -114,32 +130,32 @@
 	// the part where the window listens to the remote for navigation and click
 	socket.on('msg', function (data) {
 		var lastActive;
-		if (data=="UNLOCK") {
-			alert('unlock');
+	    if (data=="0") {
+	 	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+		   $(".activ").effect("pulsate",{times:3},1000).removeClass("activ");
+			
+
 	    }
-	    if (data=="UP") {
-	    	// decrement activeID to move the cursor up the clickable list
-			lastActive = $(".activ").index(".clickable");
-	    	if ( $(".clickable")[$(".activ").index(".clickable")-1] ) {
-	    		$($(".clickable")[lastActive]).removeClass("activ");
-	    		$($(".clickable")[lastActive-1]).addClass("activ");
-	    	}
-	    }
-	    if (data=="DOWN") {
+	    if (data=="1") {
 	    	// increment activeID to move the cursor down the clickable list
-			lastActive = $(".activ").index(".clickable");
-	    	if ( $(".clickable")[$(".activ").index(".clickable")+1] ) {
-	    		$($(".clickable")[lastActive]).removeClass("activ");
-	    		$($(".clickable")[lastActive+1]).addClass("activ");
-	    	}
+	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+		   $(".activ").effect("pulsate",{times:3},1000).removeClass("activ");
 	    }
-	    if (data=="ENTER") {
+	    if (data=="2") {
 	    	// perform the action on the clickable selection
-			alert($(".activ"));
+	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+		   $(".activ").effect("pulsate",{times:3},1000).removeClass("activ");
 	    } 	
-	    if (data=="RED") {
-		    alert('red pressed'); 
-	    }
+	    
+	    if (data=="3") {
+	    	// perform the action on the clickable selection
+	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+		   $(".activ").effect("pulsate",{times:3},1000).removeClass("activ");
+	    } 
 	    	    //Debug controllers
 	    if (data.msg=="debug") {
 		    window.location=data.URL;

@@ -5,6 +5,15 @@
 		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 		<link href="stylesheet2.css" rel="stylesheet" type="text/css"/>
+						<style>
+			#remote{position:relative; top:-5px; z-index:300;}
+			#remote a, #remote span{display:block;width:90px;height:90px;margin-bottom:10px;outline:0;}
+			#remote #o1{margin-left:15px;background:url('buttons-texture2.png') 0 0;}
+			#remote #o3{margin-left:15px;background:url('buttons-texture2.png') -90px 0;}
+			#remote #o2{width:120px; background:url('buttons-texture2.png') -180px 0;}
+			#remote #o4{width:120px; background:url('buttons-texture2.png') -310px 0;}
+			#remote a.down, #remote span.down{background-position-y:-90px;}
+		</style>
 	</head>
 	
 <!--	<body>
@@ -71,8 +80,8 @@
 	<script type="text/javascript">
 		var keylight= "white"
 		var carlight= "green"
-		var hours= 2
-		var minutes = 50
+		var hours= 1
+		var minutes = "44"
 		var untilTime = new Date();
 		untilTime.setHours(untilTime.getHours());
 		untilTime.setMinutes(untilTime.getMinutes()+45);
@@ -100,6 +109,7 @@
 	</script>		
 	<script>
 	var socket = io.connect();
+	
 	socket.emit('remote', {key: keylight, car: carlight, h: hours, m: minutes});
 	
 	$(document).ready( function() {
@@ -124,33 +134,36 @@
 		if (data=="UNLOCK") {
 			alert('unlock');
 	    }
-	    if (data=="UP") {
-	    	// decrement activeID to move the cursor up the clickable list
-			lastActive = $(".activ").index(".clickable");
-	    	if ( $(".clickable")[$(".activ").index(".clickable")-1] ) {
-	    		$($(".clickable")[lastActive]).removeClass("activ");
-	    		$($(".clickable")[lastActive-1]).addClass("activ");
-	    	}
+	       if (data=="0") {
+	 	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+		   $(".activ").effect("pulsate",{times:3},1000).removeClass("activ");
+		   $('.activ').click();
+			
+
 	    }
-	    if (data=="DOWN") {
+	    if (data=="1") {
 	    	// increment activeID to move the cursor down the clickable list
-			lastActive = $(".activ").index(".clickable");
-	    	if ( $(".clickable")[$(".activ").index(".clickable")+1] ) {
-	    		$($(".clickable")[lastActive]).removeClass("activ");
-	    		$($(".clickable")[lastActive+1]).addClass("activ");
-	    	}
+	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+		   $(".activ").effect("pulsate",{times:3},1000).removeClass("activ");
+		   $('.activ').click();
 	    }
-	    if (data=="ENTER") {
+	    if (data=="2") {
 	    	// perform the action on the clickable selection
-			alert($(".activ"));
+	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+		   $(".activ").effect("pulsate",{times:3},1000).removeClass("activ");
+		   $('.activ').click();
 	    } 	
-	    if (data=="RED") {
-		    alert('red pressed'); 
-	    }
-	    	    //Debug controllers
-	    if (data.msg=="debug") {
-		    window.location=data.URL;
-	    }
+	    
+	    if (data=="3") {
+	    	// perform the action on the clickable selection
+	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+		   $(".activ").effect("pulsate",{times:3},1000).removeClass("activ");
+		   $('.activ').click();
+	    } 
 
 	    if (data.msg=="debugname"){
 	    	$("span#name").text(data.name);

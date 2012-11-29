@@ -5,12 +5,21 @@
 		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 		<link href="stylesheet2.css" rel="stylesheet" type="text/css"/>
+						<style>
+			#remote{position:relative; top:-5px; z-index:300;}
+			#remote a, #remote span{display:block;width:90px;height:90px;margin-bottom:10px;outline:0;}
+			#remote #o1{margin-left:15px;background:url('buttons-texture2.png') 0 0;}
+			#remote #o3{margin-left:15px;background:url('buttons-texture2.png') -90px 0;}
+			#remote #o2{width:120px; background:url('buttons-texture2.png') -180px 0;}
+			#remote #o4{width:120px; background:url('buttons-texture2.png') -310px 0;}
+			#remote a.down, #remote span.down{background-position-y:-90px;}
+		</style>
 	</head>
 	
 	<body>
 	<header>
 		<h1 id="logo">Great Circles</h1>
-				<h2>12:00PM</h1>
+		<h2>12:00PM</h1>
 		<!-- <h2 id="currenttime"></h2> !-->
 	</header>
 	<hr style="margin:0px; padding: 0px; background-color:#F4F444"> 
@@ -18,17 +27,45 @@
 	<section id="messages">
 		<span id="greeting">Hello, </span><span id="name">Keenan!</span>
 		<hr><h1 style="position:relative; left:-10px;">Status</h1>
-		<span id="othertext1">Car is free until </span><span id="timefield1">3:45PM</span><br>	
+		<span id="othertext1">Car is free until </span><span>3:45PM</span><br>	
 	</section>
 	<section id="menu">
-		<div id="actions">
-		  	<div id="action1" class="clickable activ">+ 0:15</div>
-		  	<div id="action2" class="">time:</div>
-		  	<div id="action3" class="clickable">- 0:15</div>	
+	
+	
+		
+		<div id="action1" class="clickable" onclick="" style="font-size:28px; color:#002200; background-color:#FAFA97; position:relative">+ 0:15
+		<div id="remote" style="position:relative; top: 10px; left:65px">
+		<a id="o1">
+		</a>
+		</div>
+		</div>
+		<br></br>
+<div id="action2" class="">time:</div>
+<br></br>
+		<div id="action3" class="clickable" onclick="" style="font-size:28px; color:#002200; background-color:#FAFA97; position:relative">- 0:15
+		<div id="remote" style="position:relative; top: 10px; left:65px">
+		<a id="o2">
+		</a>
+		</div>
+		</div>
+	
 		  	<br><br>	  	
-		  	<div id="action4" class="clickable" onclick="window.location.href='window-trial7-a1-a4.html'">drive now</div>
-		  	<div id="action5" class="clickable" onclick="window.location.href='window-trial7.html'">back</div>
-
+		  	
+		  	
+		  	
+		  	<div id="action4" class="clickable" onclick="window.location.href='window-trial7-a1-a4_alt.html'" style="font-size:28px; color:#002200; background-color:#FAFA97; position:relative">drive now
+		<div id="remote" style="position:relative; top: 10px; left:65px">
+		<a id="o3">
+		</a>
+		</div>
+		</div>
+		
+				  	<div id="action5" class="clickable" onclick="window.location.href='window-trial7_alt.html'" style="font-size:28px; color:#002200; background-color:#FAFA97; position:relative">back
+		<div id="remote" style="position:relative; top: 10px; left:65px">
+		<a id="o4">
+		</a>
+		</div>
+		</div>
 		</div>
 	</section>
 	<footer>
@@ -42,6 +79,10 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
 	<script type="text/javascript">
+			var keylight= "white"
+		var carlight= "white"
+		var hours= 3
+		var minutes = "45"
 		var untilTime = new Date();
 		untilTime.setHours(untilTime.getHours());
 		untilTime.setMinutes(untilTime.getMinutes()+45);
@@ -68,10 +109,11 @@
 		}
 	</script>		
 	<script>
-				var keylight= "white"
-		var carlight= "white"
-		var hours= 3
-		var minutes = "45"
+	
+	
+	
+	
+	
 	var socket = io.connect();
 	socket.emit('remote', {key: keylight, car: carlight, h: hours, m: minutes});
 	
@@ -130,35 +172,41 @@
 		if (data=="UNLOCK") {
 			alert('unlock');
 	    }
-	    if (data=="UP") {
-	    	// decrement activeID to move the cursor up the clickable list
-			lastActive = $(".activ").index(".clickable");
-	    	if ( $(".clickable")[$(".activ").index(".clickable")-1] ) {
-	    		$($(".clickable")[lastActive]).removeClass("activ");
-	    		$($(".clickable")[lastActive-1]).addClass("activ");
-	    	}
+	       if (data=="0") {
+	 	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+	    	 $('.activ').click();
+		   $(".activ").effect("pulsate",{times:2},500).removeClass("activ");
+		  
+			
+
 	    }
-	    if (data=="DOWN") {
+	    if (data=="1") {
 	    	// increment activeID to move the cursor down the clickable list
-			lastActive = $(".activ").index(".clickable");
-	    	if ( $(".clickable")[$(".activ").index(".clickable")+1] ) {
-	    		$($(".clickable")[lastActive]).removeClass("activ");
-	    		$($(".clickable")[lastActive+1]).addClass("activ");
-	    	}
+	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+	    	 $('.activ').click();
+		   $(".activ").effect("pulsate",{times:2},500).removeClass("activ");
+		  
 	    }
-	    if (data=="ENTER") {
+	    if (data=="2") {
 	    	// perform the action on the clickable selection
-			$('.activ').click();
-
+	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+	    	 $('.activ').click();
+		   $(".activ").effect("pulsate",{times:2},500).removeClass("activ");
+		  
 	    } 	
-	    if (data=="RED") {
-		    alert('red pressed'); 
-	    }
-	    	    //Debug controllers
-	    if (data.msg=="debug") {
-		    window.location=data.URL;
-	    }
-
+	    
+	    if (data=="3") {
+	    	// perform the action on the clickable selection
+	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+	    	 $('.activ').click();
+		   $(".activ").effect("pulsate",{times:2},500).removeClass("activ");
+		  
+	    } 
+	    
 	    if (data.msg=="debugname"){
 	    	$("span#name").text(data.name);
 		    

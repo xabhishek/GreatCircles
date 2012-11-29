@@ -10,14 +10,15 @@
 	<body>
 	<header>
 		<h1 id="logo">Great Circles</h1>
-		<h2 id="currenttime"></h2>
+				<h2>12:00PM</h1>
+		<!-- <h2 id="currenttime"></h2> !-->
 	</header>
 	<hr style="margin:0px; padding: 0px; background-color:#F4F444"> 
 	<div class="tiny">system for community car ownership</div>
 	<section id="messages">
 		<span id="greeting">Hello, </span><span id="name">Keenan!</span>
 		<hr><h1 style="position:relative; left:-10px;">Status</h1>
-		<span id="othertext1">Car is free until</span><span id="timefield1">4:00PM</span><br>	
+		<span id="othertext1">Car is free until</span><span id="timefield1">3:45PM</span><br>	
 		<span id="othertext2"></span><span id="timefield2"></span>
 	</section>
 	<section id="menu">
@@ -92,6 +93,10 @@
 		}
 	</script>		
 	<script>
+			var keylight= "white"
+		var carlight= "white"
+		var hours= 3
+		var minutes = "45"
 	var socket = io.connect();
 	socket.emit('remote', {key: keylight, car: carlight, h: hours, m: minutes});
 	
@@ -117,29 +122,36 @@
 		if (data=="UNLOCK") {
 			alert('unlock');
 	    }
-	    if (data=="UP") {
-	    	// decrement activeID to move the cursor up the clickable list
-			lastActive = $(".activ").index(".clickable");
-	    	if ( $(".clickable")[$(".activ").index(".clickable")-1] ) {
-	    		$($(".clickable")[lastActive]).removeClass("activ");
-	    		$($(".clickable")[lastActive-1]).addClass("activ");
-	    	}
+	       if (data=="0") {
+	 	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+		   $(".activ").effect("pulsate",{times:3},1000).removeClass("activ");
+		   $('.activ').click();
+			
+
 	    }
-	    if (data=="DOWN") {
+	    if (data=="1") {
 	    	// increment activeID to move the cursor down the clickable list
-			lastActive = $(".activ").index(".clickable");
-	    	if ( $(".clickable")[$(".activ").index(".clickable")+1] ) {
-	    		$($(".clickable")[lastActive]).removeClass("activ");
-	    		$($(".clickable")[lastActive+1]).addClass("activ");
-	    	}
+	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+		   $(".activ").effect("pulsate",{times:3},1000).removeClass("activ");
+		   $('.activ').click();
 	    }
-	    if (data=="ENTER") {
+	    if (data=="2") {
 	    	// perform the action on the clickable selection
-			alert($(".activ"));
+	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+		   $(".activ").effect("pulsate",{times:3},1000).removeClass("activ");
+		   $('.activ').click();
 	    } 	
-	    if (data=="RED") {
-		    alert('red pressed'); 
-	    }
+	    
+	    if (data=="3") {
+	    	// perform the action on the clickable selection
+	    	$(".clickable").removeClass("activ");
+	    	$($(".clickable")[data]).addClass("activ");
+		   $(".activ").effect("pulsate",{times:3},1000).removeClass("activ");
+		   $('.activ').click();
+	    } 
 	    	    //Debug controllers
 	    if (data.msg=="debug") {
 		    window.location=data.URL;

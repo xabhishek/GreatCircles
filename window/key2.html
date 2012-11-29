@@ -130,18 +130,18 @@
 	});
 
 	 	$("#o1").click(function(){
-	 		socket.emit('remote', "UNLOCK");
+	 		socket.emit('remote', "0");
 	 	});
 	 	$("#o2").click(function(){
-	 		socket.emit('remote', "UP");
+	 		socket.emit('remote', "1");
 	 	}
 	 	);
 	 	$("#o3").click(function(){
-		 	socket.emit('remote', "ENTER");
+		 	socket.emit('remote', "2");
 	 	}
 	 	);
 	 	$("#o4").click(function(){
-		 	socket.emit('remote', "DOWN");
+		 	socket.emit('remote', "3");
 
 	 	}
 		);
