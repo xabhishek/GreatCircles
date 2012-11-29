@@ -19,7 +19,7 @@
 		<span id="greeting">Hello, </span><span id="name">Keenan!</span>
 		<hr><h1 style="position:relative; left:-10px;">Status</h1>
 		<span id="othertext1">Reserved Trip Started!</span><span id="timefield1"></span><br>	
-		<span id="othertext2">Remaining time: </span><span>2:50:00</span>
+		<span id="othertext2">Remaining time: </span><span>2:49:00</span>
 	</section>
 	<section id="menu">
 		<div id="actions">
@@ -72,7 +72,7 @@
 		var keylight= "white"
 		var carlight= "green"
 		var hours= 2
-		var minutes = 59
+		var minutes = "49"
 	var socket = io.connect();
 	socket.emit('remote', {key: keylight, car: carlight, h: hours, m: minutes});
 	
